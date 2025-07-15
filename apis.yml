@@ -98,3 +98,23 @@ common:
     description: 'null'
     url: https://zylo.com/pricing/
     type: Pricing
+  - name: Features
+    type: Features
+    data:
+      - name: SaaS Management
+      - name: SaaS Spend
+      - name: Application Spend
+      - name: Application Utilization
+      - name: Renewal Data
+      - name: SaaS Inventory Management
+      - name: License Mangement
+      - name: Renewal Management
+      - name: Pricing Benchmarks
+      - name: Application Benchmarks
+      - name: Visiblity
+      - name: Cost Optimization
+      - name: SaaS Discovery
+      - name: SaaS Governance
+      - name: Software License Management
+      - name: SaaS Optimization
+      - name: Employee Productivity
