@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "zylo": "https://developer.zylo.com/reference/",
+    "id": "@id",
+    "type": "@type",
+    "Subscription": {
+      "@id": "zylo:Subscription",
+      "@context": {
+        "name": "schema:name",
+        "applicationId": "zylo:applicationId",
+        "applicationName": "zylo:applicationName",
+        "status": "schema:status",
+        "owner": "schema:owner",
+        "renewalDate": {
+          "@id": "zylo:renewalDate",
+          "@type": "schema:Date"
+        },
+        "annualCost": {
+          "@id": "zylo:annualCost",
+          "@type": "schema:MonetaryAmount"
+        },
+        "licenseCount": {
+          "@id": "zylo:licenseCount",
+          "@type": "schema:Integer"
+        },
+        "usedLicenseCount": {
+          "@id": "zylo:usedLicenseCount",
+          "@type": "schema:Integer"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "schema:DateTime"
+        },
+        "updatedAt": {
+          "@id": "schema:dateModified",
+          "@type": "schema:DateTime"
+        },
+        "customFields": "zylo:customFields"
+      }
+    },
+    "Application": {
+      "@id": "zylo:Application",
+      "@context": {
+        "name": "schema:name",
+        "category": "schema:category",
+        "owner": "schema:owner",
+        "status": "schema:status",
+        "trueUp": "zylo:trueUp",
+        "totalSpend": {
+          "@id": "zylo:totalSpend",
+          "@type": "schema:MonetaryAmount"
+        },
+        "subscriptionCount": {
+          "@id": "zylo:subscriptionCount",
+          "@type": "schema:Integer"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "schema:DateTime"
+        },
+        "updatedAt": {
+          "@id": "schema:dateModified",
+          "@type": "schema:DateTime"
+        },
+        "customFields": "zylo:customFields"
+      }
+    },
+    "ExportJob": {
+      "@id": "zylo:ExportJob",
+      "@context": {
+        "status": "schema:status",
+        "downloadUrl": {
+          "@id": "schema:contentUrl",
+          "@type": "@id"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "schema:DateTime"
+        },
+        "completedAt": {
+          "@id": "zylo:completedAt",
+          "@type": "schema:DateTime"
+        },
+        "error": "zylo:error"
+      }
+    },
+    "ImportJob": {
+      "@id": "zylo:ImportJob",
+      "@context": {
+        "subscriptionId": "zylo:subscriptionId",
+        "status": "schema:status",
+        "fileName": "schema:name",
+        "recordsProcessed": {
+          "@id": "zylo:recordsProcessed",
+          "@type": "schema:Integer"
+        },
+        "recordsFailed": {
+          "@id": "zylo:recordsFailed",
+          "@type": "schema:Integer"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "schema:DateTime"
+        },
+        "completedAt": {
+          "@id": "zylo:completedAt",
+          "@type": "schema:DateTime"
+        },
+        "error": "zylo:error"
+      }
+    }
+  }
+}

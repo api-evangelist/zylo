@@ -18,6 +18,16 @@ apis:
         type: OpenAPI
       - url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
         type: PostmanCollection
+      - url: json-schema/subscription.json
+        type: JSONSchema
+      - url: json-schema/application.json
+        type: JSONSchema
+      - url: json-schema/export-job.json
+        type: JSONSchema
+      - url: json-schema/import-job.json
+        type: JSONSchema
+      - url: json-ld/zylo-context.jsonld
+        type: JSONLD
     description: >-
       The Zylo Enterprise API provides a modern, RESTful API to work with SaaS
       subscription data. It enables the export of SaaS usage and subscription

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "subscription.json",
+  "title": "Zylo Subscription",
+  "description": "A subscription represents a configured instance of a SaaS application within the Zylo platform. Subscriptions typically have a 1:1 relationship with a given application, though an organization may have multiple subscriptions to the same application.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the subscription."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the subscription."
+    },
+    "applicationId": {
+      "type": "string",
+      "description": "The ID of the associated application."
+    },
+    "applicationName": {
+      "type": "string",
+      "description": "The name of the associated application."
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the subscription.",
+      "enum": ["active", "inactive", "pending"]
+    },
+    "owner": {
+      "type": "string",
+      "description": "The owner of the subscription."
+    },
+    "renewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The next renewal date for the subscription."
+    },
+    "annualCost": {
+      "type": "number",
+      "description": "The annual cost of the subscription."
+    },
+    "licenseCount": {
+      "type": "integer",
+      "description": "The total number of licenses for this subscription."
+    },
+    "usedLicenseCount": {
+      "type": "integer",
+      "description": "The number of licenses currently in use."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the subscription was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the subscription was last updated."
+    },
+    "customFields": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Custom fields associated with the subscription."
+    }
+  },
+  "required": ["id", "name", "applicationId", "status"]
+}

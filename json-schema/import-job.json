@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "import-job.json",
+  "title": "Zylo Import Job",
+  "description": "An import job represents an asynchronous task for importing user, license, and activity data into Zylo from a CSV file for a specific subscription.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the import job."
+    },
+    "subscriptionId": {
+      "type": "string",
+      "description": "The subscription ID this import job is associated with."
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the import job.",
+      "enum": ["pending", "processing", "completed", "failed"]
+    },
+    "fileName": {
+      "type": "string",
+      "description": "The name of the uploaded CSV file."
+    },
+    "recordsProcessed": {
+      "type": "integer",
+      "description": "The number of records processed from the CSV file."
+    },
+    "recordsFailed": {
+      "type": "integer",
+      "description": "The number of records that failed to import."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the import job was created."
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the import job completed."
+    },
+    "error": {
+      "type": "string",
+      "description": "Error message if the job failed."
+    }
+  },
+  "required": ["id", "subscriptionId", "status"]
+}

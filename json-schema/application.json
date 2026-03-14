@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "application.json",
+  "title": "Zylo Application",
+  "description": "An application represents a SaaS software product tracked within the Zylo platform, including metadata such as owner, category, spend, and custom fields.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the application."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the application."
+    },
+    "category": {
+      "type": "string",
+      "description": "The category of the application."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The owner of the application."
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the application.",
+      "enum": ["active", "inactive", "under_review"]
+    },
+    "trueUp": {
+      "type": "boolean",
+      "description": "Whether the application is marked for true-up."
+    },
+    "totalSpend": {
+      "type": "number",
+      "description": "The total spend on this application."
+    },
+    "subscriptionCount": {
+      "type": "integer",
+      "description": "The number of subscriptions for this application."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the application was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the application was last updated."
+    },
+    "customFields": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Custom fields associated with the application."
+    }
+  },
+  "required": ["id", "name", "status"]
+}
