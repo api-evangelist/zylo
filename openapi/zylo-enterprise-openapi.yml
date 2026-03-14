@@ -1,0 +1,722 @@
+openapi: 3.1.0
+info:
+  title: Zylo Enterprise API
+  description: >-
+    The Zylo Enterprise API provides a modern, RESTful API to work with your
+    SaaS subscription data. The API is built using resource-oriented URLs that
+    are protected by HTTPS transport security and authenticated via secure
+    tokens. It enables the export of SaaS usage and subscription data to
+    reporting tools outside of Zylo, as well as the import of additional
+    unintegrated usage data.
+  version: 1.0.0
+  contact:
+    name: Zylo
+    url: https://zylo.com/contact/
+  license:
+    name: Proprietary
+    url: https://zylo.com/msa/
+  termsOfService: https://zylo.com/msa/
+
+servers:
+  - url: https://api.zylo.com/v1
+    description: Zylo Enterprise API v1
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Subscriptions
+    description: >-
+      Subscriptions are configured instances created in the Zylo user interface.
+      They typically have a 1:1 relationship to a given application, though you
+      may also have multiple subscriptions to the same application within your
+      organization.
+  - name: Applications
+    description: >-
+      Applications represent SaaS software products tracked within the Zylo
+      platform, including metadata such as owner, category, and custom fields.
+  - name: Export Jobs
+    description: >-
+      Export Jobs allow you to export subscription data asynchronously. You
+      first create an export job, then retrieve the results when the job is
+      complete.
+  - name: Import Jobs
+    description: >-
+      Import Jobs allow you to import user, license, and activity data from
+      non-integrated applications via CSV upload to optimize license usage
+      across SaaS applications.
+
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: List subscriptions
+      description: >-
+        Retrieves a paginated list of subscriptions configured in your Zylo
+        account. Subscriptions represent configured instances of SaaS
+        applications and typically have a 1:1 relationship with a given
+        application.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: pageSize
+          in: query
+          description: The maximum number of results to return per page.
+          schema:
+            type: integer
+            default: 25
+        - name: pageToken
+          in: query
+          description: >-
+            A token returned from a previous list request to retrieve the next
+            page of results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of subscriptions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /subscriptions/{subscriptionId}:
+    get:
+      operationId: getSubscription
+      summary: Get a subscription
+      description: Retrieves details for a specific subscription by its ID.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: The unique identifier of the subscription.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The subscription details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /applications:
+    get:
+      operationId: listApplications
+      summary: List applications
+      description: >-
+        Retrieves a paginated list of applications tracked in your Zylo
+        account. Applications represent SaaS products and include metadata
+        such as category, owner, and custom fields.
+      tags:
+        - Applications
+      parameters:
+        - name: pageSize
+          in: query
+          description: The maximum number of results to return per page.
+          schema:
+            type: integer
+            default: 25
+        - name: pageToken
+          in: query
+          description: >-
+            A token returned from a previous list request to retrieve the next
+            page of results.
+          schema:
+            type: string
+        - name: custom_fields
+          in: query
+          description: >-
+            Filter applications by custom field values. Uses bracket notation
+            such as custom_fields[boolean]=true.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          style: deepObject
+          explode: true
+      responses:
+        '200':
+          description: A paginated list of applications.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /applications/{applicationId}:
+    get:
+      operationId: getApplication
+      summary: Get an application
+      description: Retrieves details for a specific application by its ID.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: The unique identifier of the application.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The application details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Application not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: updateApplication
+      summary: Update an application
+      description: >-
+        Updates properties of a specific application, including custom fields
+        and the true_up property.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: The unique identifier of the application.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUpdate'
+      responses:
+        '200':
+          description: The updated application details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Application not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /subscriptions/-/exportJobs:
+    post:
+      operationId: createExportJob
+      summary: Create an export job
+      description: >-
+        Creates an asynchronous export job for subscription data. Due to the
+        size of the data, subscription exports use an asynchronous workflow
+        where you first create the export job and then retrieve the results
+        when the job is complete.
+      tags:
+        - Export Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportJobRequest'
+      responses:
+        '201':
+          description: The export job has been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /subscriptions/-/exportJobs/{exportJobId}:
+    get:
+      operationId: getExportJob
+      summary: Get an export job
+      description: >-
+        Retrieves the status and results of a previously created export job.
+        When the job is complete, the response includes a URL to download the
+        exported data.
+      tags:
+        - Export Jobs
+      parameters:
+        - name: exportJobId
+          in: path
+          required: true
+          description: The unique identifier of the export job.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The export job details and status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Export job not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /subscriptions/{subscriptionId}/importJob:
+    get:
+      operationId: listImportJobs
+      summary: List import jobs
+      description: >-
+        Retrieves a paginated list of import jobs for a specific subscription.
+      tags:
+        - Import Jobs
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: The unique identifier of the subscription.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: The maximum number of results to return per page.
+          schema:
+            type: integer
+            default: 25
+        - name: pageToken
+          in: query
+          description: >-
+            A token returned from a previous list request to retrieve the next
+            page of results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of import jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJobListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createImportJob
+      summary: Create an import job
+      description: >-
+        Creates an import job for a specific subscription by uploading a CSV
+        file containing user, license, and activity data. The subscription must
+        first be associated with the API Integration in the Zylo UI.
+      tags:
+        - Import Jobs
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: The unique identifier of the subscription.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The CSV file containing user, license, and activity data.
+              required:
+                - file
+      responses:
+        '201':
+          description: The import job has been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /subscriptions/{subscriptionId}/importJob/{importJobId}:
+    get:
+      operationId: getImportJob
+      summary: Get an import job
+      description: Retrieves the status and details of a specific import job.
+      tags:
+        - Import Jobs
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          description: The unique identifier of the subscription.
+          schema:
+            type: string
+        - name: importJobId
+          in: path
+          required: true
+          description: The unique identifier of the import job.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The import job details and status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Import job not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token authentication using your Token ID and Token Secret
+        separated by a colon (TOKENID:TOKENSECRET). Tokens can be created in
+        the Zylo Admin panel under Company Tokens.
+
+  schemas:
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the subscription.
+        name:
+          type: string
+          description: The display name of the subscription.
+        applicationId:
+          type: string
+          description: The ID of the associated application.
+        applicationName:
+          type: string
+          description: The name of the associated application.
+        status:
+          type: string
+          description: The current status of the subscription.
+          enum:
+            - active
+            - inactive
+            - pending
+        owner:
+          type: string
+          description: The owner of the subscription.
+        renewalDate:
+          type: string
+          format: date
+          description: The next renewal date for the subscription.
+        annualCost:
+          type: number
+          format: double
+          description: The annual cost of the subscription.
+        licenseCount:
+          type: integer
+          description: The total number of licenses for this subscription.
+        usedLicenseCount:
+          type: integer
+          description: The number of licenses currently in use.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the subscription was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the subscription was last updated.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields associated with the subscription.
+
+    SubscriptionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        nextPageToken:
+          type: string
+          description: >-
+            A token that can be passed as a pageToken query parameter to
+            retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of subscriptions.
+
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the application.
+        name:
+          type: string
+          description: The display name of the application.
+        category:
+          type: string
+          description: The category of the application.
+        owner:
+          type: string
+          description: The owner of the application.
+        status:
+          type: string
+          description: The current status of the application.
+          enum:
+            - active
+            - inactive
+            - under_review
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        totalSpend:
+          type: number
+          format: double
+          description: The total spend on this application.
+        subscriptionCount:
+          type: integer
+          description: The number of subscriptions for this application.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the application was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the application was last updated.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields associated with the application.
+
+    ApplicationUpdate:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The owner of the application.
+        category:
+          type: string
+          description: The category of the application.
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields to update on the application.
+
+    ApplicationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+          description: >-
+            A token that can be passed as a pageToken query parameter to
+            retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of applications.
+
+    ExportJobRequest:
+      type: object
+      properties:
+        subscriptionIds:
+          type: array
+          items:
+            type: string
+          description: >-
+            An optional list of subscription IDs to include in the export. If
+            not specified, all subscriptions will be exported.
+        format:
+          type: string
+          description: The format of the exported data.
+          enum:
+            - csv
+            - json
+          default: csv
+
+    ExportJob:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the export job.
+        status:
+          type: string
+          description: The current status of the export job.
+          enum:
+            - pending
+            - processing
+            - completed
+            - failed
+        downloadUrl:
+          type: string
+          format: uri
+          description: >-
+            The URL to download the exported data. Only available when the
+            job status is completed.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the export job was created.
+        completedAt:
+          type: string
+          format: date-time
+          description: The date and time the export job completed.
+        error:
+          type: string
+          description: Error message if the job failed.
+
+    ImportJob:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the import job.
+        subscriptionId:
+          type: string
+          description: The subscription ID this import job is associated with.
+        status:
+          type: string
+          description: The current status of the import job.
+          enum:
+            - pending
+            - processing
+            - completed
+            - failed
+        fileName:
+          type: string
+          description: The name of the uploaded CSV file.
+        recordsProcessed:
+          type: integer
+          description: The number of records processed from the CSV file.
+        recordsFailed:
+          type: integer
+          description: The number of records that failed to import.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the import job was created.
+        completedAt:
+          type: string
+          format: date-time
+          description: The date and time the import job completed.
+        error:
+          type: string
+          description: Error message if the job failed.
+
+    ImportJobListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportJob'
+        nextPageToken:
+          type: string
+          description: >-
+            A token that can be passed as a pageToken query parameter to
+            retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of import jobs.
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.

@@ -1,19 +1,31 @@
 aid: zylo
 url: https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
 apis:
-  - aid: zylo:zylo
-    name: Zylo
+  - aid: zylo:enterprise-api
+    name: Zylo Enterprise API
     tags:
       - SaaS Management
-    humanURL: ' https://zylo.com/'
+      - Subscriptions
+      - Applications
+      - Data Export
+      - Data Import
+    humanURL: https://developer.zylo.com/
+    baseURL: https://api.zylo.com/v1
     properties:
-      - url: ' https://zylo.com/'
+      - url: https://developer.zylo.com/reference/introduction
         type: Documentation
+      - url: openapi/zylo-enterprise-openapi.yml
+        type: OpenAPI
+      - url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+        type: PostmanCollection
     description: >-
-      One AI-Powered Platform.Three Complete Solutions.Only Zylo delivers a
-      comprehensive inventory, license and renewal management solution to
-      maximize efficiency, visibility, and governance for IT, Procurement, and
-      SAM. 
+      The Zylo Enterprise API provides a modern, RESTful API to work with SaaS
+      subscription data. It enables the export of SaaS usage and subscription
+      data to reporting tools outside of Zylo, as well as the import of
+      additional unintegrated usage data. The API is built using
+      resource-oriented URLs protected by HTTPS transport security and
+      authenticated via bearer tokens. Key resources include subscriptions,
+      applications, export jobs, and import jobs.
 name: Zylo
 tags:
   - SaaS Management
@@ -109,7 +121,7 @@ common:
     name: Features
     type: Features
 created: '2025-07-15'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consuming
 description: >-
   Zylo is a SaaS management platform that helps organizations optimize their
