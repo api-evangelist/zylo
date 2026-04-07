@@ -1,5 +1,6 @@
 aid: zylo
-url: https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
 apis:
   - aid: zylo:enterprise-api
     name: Zylo Enterprise API
@@ -16,7 +17,8 @@ apis:
         type: Documentation
       - url: openapi/zylo-enterprise-openapi.yml
         type: OpenAPI
-      - url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+      - url: 
+          https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
         type: PostmanCollection
       - url: json-schema/subscription.json
         type: JSONSchema
@@ -134,16 +136,11 @@ created: '2025-07-15'
 modified: '2026-03-14'
 position: Consuming
 description: >-
-  Zylo is a SaaS management platform that helps organizations optimize their
-  software usage and spending. By providing insights into software utilization,
-  licensing agreements, and renewal dates, Zylo enables companies to make
-  informed decisions about their software investments. With Zylo, businesses can
-  track their software expenses, manage subscriptions, and ensure compliance
-  with licensing agreements. Additionally, Zylo's platform offers
-  recommendations for cost-saving opportunities and helps organizations
-  streamline their software procurement processes. Overall, Zylo helps
-  businesses maximize the value of their software investments and drive
-  efficiency in their operations.
+  Zylo is a SaaS management platform that helps organizations optimize their software
+  usage and spending. By providing insights into software utilization, licensing agreements,
+  and renewal dates, Zylo enables companies to make informed decisions about their
+  software investments. With Zylo, businesses can track their software expenses, manage
+  subscriptions, and ensure compliance with licensing agreements.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

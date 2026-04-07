@@ -50,7 +50,7 @@ paths:
   /subscriptions:
     get:
       operationId: listSubscriptions
-      summary: List subscriptions
+      summary: Zylo List subscriptions
       description: >-
         Retrieves a paginated list of subscriptions configured in your Zylo
         account. Subscriptions represent configured instances of SaaS
@@ -89,7 +89,7 @@ paths:
   /subscriptions/{subscriptionId}:
     get:
       operationId: getSubscription
-      summary: Get a subscription
+      summary: Zylo Get a subscription
       description: Retrieves details for a specific subscription by its ID.
       tags:
         - Subscriptions
@@ -123,7 +123,7 @@ paths:
   /applications:
     get:
       operationId: listApplications
-      summary: List applications
+      summary: Zylo List applications
       description: >-
         Retrieves a paginated list of applications tracked in your Zylo
         account. Applications represent SaaS products and include metadata
@@ -172,7 +172,7 @@ paths:
   /applications/{applicationId}:
     get:
       operationId: getApplication
-      summary: Get an application
+      summary: Zylo Get an application
       description: Retrieves details for a specific application by its ID.
       tags:
         - Applications
@@ -204,7 +204,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     put:
       operationId: updateApplication
-      summary: Update an application
+      summary: Zylo Update an application
       description: >-
         Updates properties of a specific application, including custom fields
         and the true_up property.
@@ -246,7 +246,7 @@ paths:
   /subscriptions/-/exportJobs:
     post:
       operationId: createExportJob
-      summary: Create an export job
+      summary: Zylo Create an export job
       description: >-
         Creates an asynchronous export job for subscription data. Due to the
         size of the data, subscription exports use an asynchronous workflow
@@ -277,7 +277,7 @@ paths:
   /subscriptions/-/exportJobs/{exportJobId}:
     get:
       operationId: getExportJob
-      summary: Get an export job
+      summary: Zylo Get an export job
       description: >-
         Retrieves the status and results of a previously created export job.
         When the job is complete, the response includes a URL to download the
@@ -314,7 +314,7 @@ paths:
   /subscriptions/{subscriptionId}/importJob:
     get:
       operationId: listImportJobs
-      summary: List import jobs
+      summary: Zylo List import jobs
       description: >-
         Retrieves a paginated list of import jobs for a specific subscription.
       tags:
@@ -360,7 +360,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     post:
       operationId: createImportJob
-      summary: Create an import job
+      summary: Zylo Create an import job
       description: >-
         Creates an import job for a specific subscription by uploading a CSV
         file containing user, license, and activity data. The subscription must
@@ -410,7 +410,7 @@ paths:
   /subscriptions/{subscriptionId}/importJob/{importJobId}:
     get:
       operationId: getImportJob
-      summary: Get an import job
+      summary: Zylo Get an import job
       description: Retrieves the status and details of a specific import job.
       tags:
         - Import Jobs
