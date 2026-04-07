@@ -1,15 +1,14 @@
 aid: zylo
-url: 
-  https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
 apis:
   - aid: zylo:enterprise-api
     name: Zylo Enterprise API
     tags:
-      - SaaS Management
-      - Subscriptions
       - Applications
       - Data Export
       - Data Import
+      - SaaS Management
+      - Subscriptions
     humanURL: https://developer.zylo.com/
     baseURL: https://api.zylo.com/v1
     properties:
@@ -17,8 +16,7 @@ apis:
         type: Documentation
       - url: openapi/zylo-enterprise-openapi.yml
         type: OpenAPI
-      - url: 
-          https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+      - url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
         type: PostmanCollection
       - url: json-schema/subscription.json
         type: JSONSchema
@@ -40,8 +38,8 @@ apis:
       applications, export jobs, and import jobs.
 name: Zylo
 tags:
-  - SaaS Management
   - Budgets
+  - SaaS Management
   - Spend
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg

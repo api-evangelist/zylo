@@ -25,12 +25,6 @@ security:
   - bearerAuth: []
 
 tags:
-  - name: Subscriptions
-    description: >-
-      Subscriptions are configured instances created in the Zylo user interface.
-      They typically have a 1:1 relationship to a given application, though you
-      may also have multiple subscriptions to the same application within your
-      organization.
   - name: Applications
     description: >-
       Applications represent SaaS software products tracked within the Zylo
@@ -46,6 +40,12 @@ tags:
       non-integrated applications via CSV upload to optimize license usage
       across SaaS applications.
 
+  - name: Subscriptions
+    description: >-
+      Subscriptions are configured instances created in the Zylo user interface.
+      They typically have a 1:1 relationship to a given application, though you
+      may also have multiple subscriptions to the same application within your
+      organization.
 paths:
   /subscriptions:
     get:
