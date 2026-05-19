@@ -1,0 +1,127 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zylo Enterprise API — Subscriptions
+  description: 'Zylo Enterprise API — Subscriptions. 2 operations. Lead operation: Zylo List subscriptions. Self-contained
+    Naftiko capability covering one Zylo business surface.'
+  tags:
+  - Zylo
+  - Subscriptions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZYLO_API_KEY: ZYLO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: enterprise-subscriptions
+    baseUri: https://api.zylo.com/v1
+    description: Zylo Enterprise API — Subscriptions business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions
+      path: /subscriptions
+      operations:
+      - name: listsubscriptions
+        method: GET
+        description: Zylo List subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pageSize
+          in: query
+          type: integer
+          description: The maximum number of results to return per page.
+        - name: pageToken
+          in: query
+          type: string
+          description: A token returned from a previous list request to retrieve the next page of results.
+    - name: subscriptions-subscriptionId
+      path: /subscriptions/{subscriptionId}
+      operations:
+      - name: getsubscription
+        method: GET
+        description: Zylo Get a subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The unique identifier of the subscription.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ZYLO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: enterprise-subscriptions-rest
+    port: 8080
+    description: REST adapter for Zylo Enterprise API — Subscriptions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions
+      name: subscriptions
+      description: REST surface for subscriptions.
+      operations:
+      - method: GET
+        name: listsubscriptions
+        description: Zylo List subscriptions
+        call: enterprise-subscriptions.listsubscriptions
+        with:
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}
+      name: subscriptions-subscriptionid
+      description: REST surface for subscriptions-subscriptionId.
+      operations:
+      - method: GET
+        name: getsubscription
+        description: Zylo Get a subscription
+        call: enterprise-subscriptions.getsubscription
+        with:
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: enterprise-subscriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zylo Enterprise API — Subscriptions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zylo-list-subscriptions
+      description: Zylo List subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: enterprise-subscriptions.listsubscriptions
+      with:
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zylo-get-subscription
+      description: Zylo Get a subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: enterprise-subscriptions.getsubscription
+      with:
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
