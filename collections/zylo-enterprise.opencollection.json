@@ -1,0 +1,284 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zylo Enterprise API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of subscriptions configured in your Zylo account. Subscriptions represent configured instances of SaaS applications and typically have a 1:1 relationship with a given application."
+        },
+        {
+          "info": {
+            "name": "Zylo Get a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific subscription by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/applications",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              },
+              {
+                "name": "custom_fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of applications tracked in your Zylo account. Applications represent SaaS products and include metadata such as category, owner, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the application."
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific application by its ID."
+        },
+        {
+          "info": {
+            "name": "Zylo Update an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zylo.com/v1/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates properties of a specific application, including custom fields and the true_up property."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Export Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo Create an export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zylo.com/v1/subscriptions/-/exportJobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an asynchronous export job for subscription data. Due to the size of the data, subscription exports use an asynchronous workflow where you first create the export job and then retrieve the results when the job is complete."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/-/exportJobs/:exportJobId",
+            "params": [
+              {
+                "name": "exportJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the export job."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and results of a previously created export job. When the job is complete, the response includes a URL to download the exported data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Import Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List import jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of import jobs for a specific subscription."
+        },
+        {
+          "info": {
+            "name": "Zylo Create an import job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates an import job for a specific subscription by uploading a CSV file containing user, license, and activity data. The subscription must first be associated with the API Integration in the Zylo UI."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an import job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob/:importJobId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              },
+              {
+                "name": "importJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the import job."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and details of a specific import job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
