@@ -126,7 +126,7 @@ common:
       - name: Employee Productivity
     name: Features
     type: Features
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developer.zylo.com/llms.txt
 created: '2025-07-15'
 modified: '2026-05-19'
