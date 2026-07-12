@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/zylo-enterprise-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication using your Token ID and Token Secret separated by
+    a colon (TOKENID:TOKENSECRET). Tokens can be created in the Zylo Admin panel under Company
+    Tokens.
+  sources:
+  - openapi/zylo-enterprise-openapi.yml
