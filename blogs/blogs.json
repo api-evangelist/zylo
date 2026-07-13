@@ -3,12 +3,13 @@
   "feeds": [
     {
       "source": "https://zylo.com/blog/",
-      "feed_url": "",
-      "saved": 2,
-      "method": "agent-scrape"
+      "feed_url": "https://zylo.com/blog/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 4,
-  "fetched": "2026-06-27T13:23:34Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "agent_pulled": "2026-06-27"
 }
