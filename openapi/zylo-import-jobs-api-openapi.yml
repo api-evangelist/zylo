@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: Zylo Enterprise Applications Import Jobs API
+  description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
+  version: 1.0.0
+  contact:
+    name: Zylo
+    url: https://zylo.com/contact/
+  license:
+    name: Proprietary
+    url: https://zylo.com/msa/
+  termsOfService: https://zylo.com/msa/
+servers:
+- url: https://api.zylo.com/v1
+  description: Zylo Enterprise API v1
+security:
+- bearerAuth: []
+tags:
+- name: Import Jobs
+  description: Import Jobs allow you to import user, license, and activity data from non-integrated applications via CSV upload to optimize license usage across SaaS applications.
+paths:
+  /subscriptions/{subscriptionId}/importJob:
+    get:
+      operationId: listImportJobs
+      summary: Zylo List import jobs
+      description: Retrieves a paginated list of import jobs for a specific subscription.
+      tags:
+      - Import Jobs
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: The unique identifier of the subscription.
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The maximum number of results to return per page.
+        schema:
+          type: integer
+          default: 25
+      - name: pageToken
+        in: query
+        description: A token returned from a previous list request to retrieve the next page of results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of import jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJobListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createImportJob
+      summary: Zylo Create an import job
+      description: Creates an import job for a specific subscription by uploading a CSV file containing user, license, and activity data. The subscription must first be associated with the API Integration in the Zylo UI.
+      tags:
+      - Import Jobs
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: The unique identifier of the subscription.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The CSV file containing user, license, and activity data.
+              required:
+              - file
+      responses:
+        '201':
+          description: The import job has been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /subscriptions/{subscriptionId}/importJob/{importJobId}:
+    get:
+      operationId: getImportJob
+      summary: Zylo Get an import job
+      description: Retrieves the status and details of a specific import job.
+      tags:
+      - Import Jobs
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: The unique identifier of the subscription.
+        schema:
+          type: string
+      - name: importJobId
+        in: path
+        required: true
+        description: The unique identifier of the import job.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The import job details and status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportJob'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Import job not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ImportJobListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportJob'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of import jobs.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
+    ImportJob:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the import job.
+        subscriptionId:
+          type: string
+          description: The subscription ID this import job is associated with.
+        status:
+          type: string
+          description: The current status of the import job.
+          enum:
+          - pending
+          - processing
+          - completed
+          - failed
+        fileName:
+          type: string
+          description: The name of the uploaded CSV file.
+        recordsProcessed:
+          type: integer
+          description: The number of records processed from the CSV file.
+        recordsFailed:
+          type: integer
+          description: The number of records that failed to import.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the import job was created.
+        completedAt:
+          type: string
+          format: date-time
+          description: The date and time the import job completed.
+        error:
+          type: string
+          description: Error message if the job failed.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using your Token ID and Token Secret separated by a colon (TOKENID:TOKENSECRET). Tokens can be created in the Zylo Admin panel under Company Tokens.

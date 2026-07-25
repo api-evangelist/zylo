@@ -1,0 +1,225 @@
+openapi: 3.1.0
+info:
+  title: Zylo Enterprise Applications API
+  description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
+  version: 1.0.0
+  contact:
+    name: Zylo
+    url: https://zylo.com/contact/
+  license:
+    name: Proprietary
+    url: https://zylo.com/msa/
+  termsOfService: https://zylo.com/msa/
+servers:
+- url: https://api.zylo.com/v1
+  description: Zylo Enterprise API v1
+security:
+- bearerAuth: []
+tags:
+- name: Applications
+  description: Applications represent SaaS software products tracked within the Zylo platform, including metadata such as owner, category, and custom fields.
+paths:
+  /applications:
+    get:
+      operationId: listApplications
+      summary: Zylo List applications
+      description: Retrieves a paginated list of applications tracked in your Zylo account. Applications represent SaaS products and include metadata such as category, owner, and custom fields.
+      tags:
+      - Applications
+      parameters:
+      - name: pageSize
+        in: query
+        description: The maximum number of results to return per page.
+        schema:
+          type: integer
+          default: 25
+      - name: pageToken
+        in: query
+        description: A token returned from a previous list request to retrieve the next page of results.
+        schema:
+          type: string
+      - name: custom_fields
+        in: query
+        description: Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true.
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+        style: deepObject
+        explode: true
+      responses:
+        '200':
+          description: A paginated list of applications.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /applications/{applicationId}:
+    get:
+      operationId: getApplication
+      summary: Zylo Get an application
+      description: Retrieves details for a specific application by its ID.
+      tags:
+      - Applications
+      parameters:
+      - name: applicationId
+        in: path
+        required: true
+        description: The unique identifier of the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The application details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Application not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: updateApplication
+      summary: Zylo Update an application
+      description: Updates properties of a specific application, including custom fields and the true_up property.
+      tags:
+      - Applications
+      parameters:
+      - name: applicationId
+        in: path
+        required: true
+        description: The unique identifier of the application.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUpdate'
+      responses:
+        '200':
+          description: The updated application details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Application not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the application.
+        name:
+          type: string
+          description: The display name of the application.
+        category:
+          type: string
+          description: The category of the application.
+        owner:
+          type: string
+          description: The owner of the application.
+        status:
+          type: string
+          description: The current status of the application.
+          enum:
+          - active
+          - inactive
+          - under_review
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        totalSpend:
+          type: number
+          format: double
+          description: The total spend on this application.
+        subscriptionCount:
+          type: integer
+          description: The number of subscriptions for this application.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the application was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the application was last updated.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields associated with the application.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
+    ApplicationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of applications.
+    ApplicationUpdate:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The owner of the application.
+        category:
+          type: string
+          description: The category of the application.
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields to update on the application.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using your Token ID and Token Secret separated by a colon (TOKENID:TOKENSECRET). Tokens can be created in the Zylo Admin panel under Company Tokens.

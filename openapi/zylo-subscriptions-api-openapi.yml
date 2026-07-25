@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Zylo Enterprise Applications Subscriptions API
+  description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
+  version: 1.0.0
+  contact:
+    name: Zylo
+    url: https://zylo.com/contact/
+  license:
+    name: Proprietary
+    url: https://zylo.com/msa/
+  termsOfService: https://zylo.com/msa/
+servers:
+- url: https://api.zylo.com/v1
+  description: Zylo Enterprise API v1
+security:
+- bearerAuth: []
+tags:
+- name: Subscriptions
+  description: Subscriptions are configured instances created in the Zylo user interface. They typically have a 1:1 relationship to a given application, though you may also have multiple subscriptions to the same application within your organization.
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: Zylo List subscriptions
+      description: Retrieves a paginated list of subscriptions configured in your Zylo account. Subscriptions represent configured instances of SaaS applications and typically have a 1:1 relationship with a given application.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: pageSize
+        in: query
+        description: The maximum number of results to return per page.
+        schema:
+          type: integer
+          default: 25
+      - name: pageToken
+        in: query
+        description: A token returned from a previous list request to retrieve the next page of results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of subscriptions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionListResponse'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /subscriptions/{subscriptionId}:
+    get:
+      operationId: getSubscription
+      summary: Zylo Get a subscription
+      description: Retrieves details for a specific subscription by its ID.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        description: The unique identifier of the subscription.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The subscription details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          description: Unauthorized. Invalid or missing authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Subscription not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
+    SubscriptionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of subscriptions.
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the subscription.
+        name:
+          type: string
+          description: The display name of the subscription.
+        applicationId:
+          type: string
+          description: The ID of the associated application.
+        applicationName:
+          type: string
+          description: The name of the associated application.
+        status:
+          type: string
+          description: The current status of the subscription.
+          enum:
+          - active
+          - inactive
+          - pending
+        owner:
+          type: string
+          description: The owner of the subscription.
+        renewalDate:
+          type: string
+          format: date
+          description: The next renewal date for the subscription.
+        annualCost:
+          type: number
+          format: double
+          description: The annual cost of the subscription.
+        licenseCount:
+          type: integer
+          description: The total number of licenses for this subscription.
+        usedLicenseCount:
+          type: integer
+          description: The number of licenses currently in use.
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the subscription was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the subscription was last updated.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields associated with the subscription.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using your Token ID and Token Secret separated by a colon (TOKENID:TOKENSECRET). Tokens can be created in the Zylo Admin panel under Company Tokens.
