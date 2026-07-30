@@ -1,47 +1,135 @@
 aid: zylo
 url: https://raw.githubusercontent.com/api-evangelist/zylo/refs/heads/main/apis.yml
 apis:
-  - aid: zylo:enterprise-api
-    name: Zylo Enterprise API
-    tags:
-      - Applications
-      - Data Export
-      - Data Import
-      - SaaS Management
-      - Subscriptions
-    humanURL: https://developer.zylo.com/
-    baseURL: https://api.zylo.com/v1
-    properties:
-      - url: https://developer.zylo.com/reference/introduction
-        type: Documentation
-      - url: openapi/zylo-enterprise-openapi.yml
-        type: OpenAPI
-      - url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
-        type: PostmanCollection
-      - url: json-schema/subscription.json
-        type: JSONSchema
-      - url: json-schema/application.json
-        type: JSONSchema
-      - url: json-schema/export-job.json
-        type: JSONSchema
-      - url: json-schema/import-job.json
-        type: JSONSchema
-      - url: json-ld/zylo-context.jsonld
-        type: JSONLD
-    description: >-
-      The Zylo Enterprise API provides a modern, RESTful API to work with SaaS subscription data. It enables the export
-      of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional
-      unintegrated usage data. The API is built using resource-oriented URLs protected by HTTPS transport security and
-      authenticated via bearer tokens. Key resources include subscriptions, applications, export jobs, and import jobs.
+- aid: zylo:zylo-applications-api
+  name: Zylo Applications API
+  description: >-
+    Applications represent SaaS software products tracked within the Zylo platform, including metadata
+    such as owner, category, and custom fields.
+  humanURL: https://developer.zylo.com/
+  baseURL: https://api.zylo.com/v1
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/zylo-applications-api-openapi.yml
+  - type: Documentation
+    url: https://developer.zylo.com/reference/introduction
+  - type: PostmanCollection
+    url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/export-job.json
+  - type: JSONSchema
+    url: json-schema/import-job.json
+  - type: JSONLD
+    url: json-ld/zylo-context.jsonld
+- aid: zylo:zylo-export-jobs-api
+  name: Zylo Export Jobs API
+  description: >-
+    Export Jobs allow you to export subscription data asynchronously. You first create an export job,
+    then retrieve the results when the job is complete.
+  humanURL: https://developer.zylo.com/
+  baseURL: https://api.zylo.com/v1
+  tags:
+  - Export Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/zylo-export-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.zylo.com/reference/introduction
+  - type: PostmanCollection
+    url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/export-job.json
+  - type: JSONSchema
+    url: json-schema/import-job.json
+  - type: JSONLD
+    url: json-ld/zylo-context.jsonld
+- aid: zylo:zylo-import-jobs-api
+  name: Zylo Import Jobs API
+  description: >-
+    Import Jobs allow you to import user, license, and activity data from non-integrated applications
+    via CSV upload to optimize license usage across SaaS applications.
+  humanURL: https://developer.zylo.com/
+  baseURL: https://api.zylo.com/v1
+  tags:
+  - Import Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/zylo-import-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.zylo.com/reference/introduction
+  - type: PostmanCollection
+    url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/export-job.json
+  - type: JSONSchema
+    url: json-schema/import-job.json
+  - type: JSONLD
+    url: json-ld/zylo-context.jsonld
+- aid: zylo:zylo-subscriptions-api
+  name: Zylo Subscriptions API
+  description: >-
+    Subscriptions are configured instances created in the Zylo user interface. They typically have a 1:1
+    relationship to a given application, though you may also have multiple subscriptions to the same application
+    within your organization.
+  humanURL: https://developer.zylo.com/
+  baseURL: https://api.zylo.com/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/zylo-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.zylo.com/reference/introduction
+  - type: PostmanCollection
+    url: https://www.postman.com/zyloteam/zylo-inc/collection/kuv1fac/zylo-api
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/application.json
+  - type: JSONSchema
+    url: json-schema/export-job.json
+  - type: JSONSchema
+    url: json-schema/import-job.json
+  - type: JSONLD
+    url: json-ld/zylo-context.jsonld
 name: Zylo
 tags:
   - Budgets
   - SaaS Management
   - Spend
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zylo.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/zylo/overview
   - type: AgenticAccess
     url: agentic-access/zylo-agentic-access.yml
   - type: TrustCenter
