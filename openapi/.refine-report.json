@@ -1,0 +1,20 @@
+{
+  "provider": "zylo",
+  "sources": [
+    "zylo-applications-api-openapi.yml",
+    "zylo-export-jobs-api-openapi.yml",
+    "zylo-import-jobs-api-openapi.yml",
+    "zylo-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "zylo-applications-api-openapi.yml",
+    "zylo-export-jobs-api-openapi.yml",
+    "zylo-import-jobs-api-openapi.yml",
+    "zylo-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

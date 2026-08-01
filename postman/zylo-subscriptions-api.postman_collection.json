@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "23cb26e3-1625-40b8-80fb-c382151349de",
+    "name": "Zylo Enterprise Applications Subscriptions API",
+    "description": "The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.\n\nContact Support:\n Name: Zylo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:38:51.000Z",
+    "updatedAt": "2026-07-28T03:38:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-23cb26e3-1625-40b8-80fb-c382151349de"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "Zylo Get a subscription",
+              "id": "02df0079-62c3-423d-85d4-44cf60add13a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8cc3cdad-3be4-4524-b937-938c9a2705f1",
+                      "key": "subscriptionId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the subscription."
+                    }
+                  ]
+                },
+                "description": "Retrieves details for a specific subscription by its ID."
+              },
+              "response": [
+                {
+                  "id": "2603302d-0820-4f12-afff-8212630c1ff5",
+                  "name": "The subscription details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"applicationId\": \"<string>\",\n  \"applicationName\": \"<string>\",\n  \"status\": \"pending\",\n  \"owner\": \"<string>\",\n  \"renewalDate\": \"<date>\",\n  \"annualCost\": \"<double>\",\n  \"licenseCount\": \"<integer>\",\n  \"usedLicenseCount\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"customFields\": {\n    \"ut3\": false\n  }\n}",
+                  "createdAt": "2026-07-28T03:38:52.000Z",
+                  "updatedAt": "2026-07-28T03:38:52.000Z",
+                  "uid": "35240-2603302d-0820-4f12-afff-8212630c1ff5"
+                },
+                {
+                  "id": "b034b0b5-547d-4053-8fab-cd32240b1eb6",
+                  "name": "Unauthorized. Invalid or missing authentication token.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:52.000Z",
+                  "updatedAt": "2026-07-28T03:38:52.000Z",
+                  "uid": "35240-b034b0b5-547d-4053-8fab-cd32240b1eb6"
+                },
+                {
+                  "id": "22d97d5f-77f5-48a6-a072-7d313029dced",
+                  "name": "Subscription not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:52.000Z",
+                  "updatedAt": "2026-07-28T03:38:52.000Z",
+                  "uid": "35240-22d97d5f-77f5-48a6-a072-7d313029dced"
+                }
+              ],
+              "createdAt": "2026-07-28T03:38:52.000Z",
+              "updatedAt": "2026-07-28T03:38:52.000Z",
+              "uid": "35240-02df0079-62c3-423d-85d4-44cf60add13a"
+            }
+          ],
+          "id": "5644c9b3-dbfd-480c-aadd-d8a10d4ad75f",
+          "createdAt": "2026-07-28T03:38:51.000Z",
+          "updatedAt": "2026-07-28T03:38:51.000Z",
+          "uid": "35240-5644c9b3-dbfd-480c-aadd-d8a10d4ad75f"
+        },
+        {
+          "name": "Zylo List subscriptions",
+          "id": "01e5fdf7-f777-453b-8e08-19a88024d0e4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions?pageSize=25&pageToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of results to return per page.",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "A token returned from a previous list request to retrieve the next page of results.",
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of subscriptions configured in your Zylo account. Subscriptions represent configured instances of SaaS applications and typically have a 1:1 relationship with a given application."
+          },
+          "response": [
+            {
+              "id": "82b9eca2-9eae-427b-a8bb-b2601df9a9d9",
+              "name": "A paginated list of subscriptions.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?pageSize=25&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "A token returned from a previous list request to retrieve the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"applicationId\": \"<string>\",\n      \"applicationName\": \"<string>\",\n      \"status\": \"pending\",\n      \"owner\": \"<string>\",\n      \"renewalDate\": \"<date>\",\n      \"annualCost\": \"<double>\",\n      \"licenseCount\": \"<integer>\",\n      \"usedLicenseCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"customFields\": {\n        \"est1\": 5446941,\n        \"esse_b3b\": false\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"applicationId\": \"<string>\",\n      \"applicationName\": \"<string>\",\n      \"status\": \"active\",\n      \"owner\": \"<string>\",\n      \"renewalDate\": \"<date>\",\n      \"annualCost\": \"<double>\",\n      \"licenseCount\": \"<integer>\",\n      \"usedLicenseCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"customFields\": {\n        \"eiusmod_5a9\": \"in aute ex commodo\"\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T03:38:52.000Z",
+              "updatedAt": "2026-07-28T03:38:52.000Z",
+              "uid": "35240-82b9eca2-9eae-427b-a8bb-b2601df9a9d9"
+            },
+            {
+              "id": "4db1c776-82c2-4508-956f-15b86906e149",
+              "name": "Unauthorized. Invalid or missing authentication token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?pageSize=25&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "A token returned from a previous list request to retrieve the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:38:52.000Z",
+              "updatedAt": "2026-07-28T03:38:52.000Z",
+              "uid": "35240-4db1c776-82c2-4508-956f-15b86906e149"
+            }
+          ],
+          "createdAt": "2026-07-28T03:38:52.000Z",
+          "updatedAt": "2026-07-28T03:38:52.000Z",
+          "uid": "35240-01e5fdf7-f777-453b-8e08-19a88024d0e4"
+        }
+      ],
+      "id": "a59f9743-6674-4dde-b6e7-545e7367674e",
+      "createdAt": "2026-07-28T03:38:51.000Z",
+      "updatedAt": "2026-07-28T03:38:51.000Z",
+      "uid": "35240-a59f9743-6674-4dde-b6e7-545e7367674e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zylo.com/v1"
+    }
+  ]
+}

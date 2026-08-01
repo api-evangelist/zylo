@@ -1,0 +1,638 @@
+{
+  "info": {
+    "_postman_id": "1e052449-97e1-4796-8d1c-604e26f5b239",
+    "name": "Zylo Enterprise Applications API",
+    "description": "The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.\n\nContact Support:\n Name: Zylo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:38:48.000Z",
+    "updatedAt": "2026-07-28T03:38:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e052449-97e1-4796-8d1c-604e26f5b239"
+  },
+  "item": [
+    {
+      "name": "applications",
+      "item": [
+        {
+          "name": "{applicationId}",
+          "item": [
+            {
+              "name": "Zylo Get an application",
+              "id": "5a1ba96a-2a8f-4973-86b8-440c85a72d78",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/applications/:applicationId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cc4f539c-9839-4b53-be81-6033a0fef7ac",
+                      "key": "applicationId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the application."
+                    }
+                  ]
+                },
+                "description": "Retrieves details for a specific application by its ID."
+              },
+              "response": [
+                {
+                  "id": "2a8fdc4c-4342-4141-bcd6-bcdcf104c2b5",
+                  "name": "The application details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"category\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"status\": \"active\",\n  \"trueUp\": \"<boolean>\",\n  \"totalSpend\": \"<double>\",\n  \"subscriptionCount\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"customFields\": {\n    \"dolore_f8b\": false,\n    \"ut_\": \"sunt deserunt\",\n    \"dolorf2d\": -20643202\n  }\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-2a8fdc4c-4342-4141-bcd6-bcdcf104c2b5"
+                },
+                {
+                  "id": "50aae313-a3e9-481c-82d7-5628f9f09681",
+                  "name": "Unauthorized. Invalid or missing authentication token.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-50aae313-a3e9-481c-82d7-5628f9f09681"
+                },
+                {
+                  "id": "0058fbcf-0262-4b7e-95cb-4c1389c44aa3",
+                  "name": "Application not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-0058fbcf-0262-4b7e-95cb-4c1389c44aa3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:38:48.000Z",
+              "updatedAt": "2026-07-28T03:38:48.000Z",
+              "uid": "35240-5a1ba96a-2a8f-4973-86b8-440c85a72d78"
+            },
+            {
+              "name": "Zylo Update an application",
+              "id": "818bc150-6cd1-493d-93ad-3b62c7cfcb7f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"owner\": \"<string>\",\n  \"category\": \"<string>\",\n  \"trueUp\": \"<boolean>\",\n  \"customFields\": {\n    \"elitdd3\": false,\n    \"nisi514\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/applications/:applicationId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "42d61d03-ccd5-401f-8edd-0c11b847e058",
+                      "key": "applicationId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the application."
+                    }
+                  ]
+                },
+                "description": "Updates properties of a specific application, including custom fields and the true_up property."
+              },
+              "response": [
+                {
+                  "id": "ff6ac511-19cd-4889-a8c6-450ab5bf118e",
+                  "name": "The updated application details.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"owner\": \"<string>\",\n  \"category\": \"<string>\",\n  \"trueUp\": \"<boolean>\",\n  \"customFields\": {\n    \"elitdd3\": false,\n    \"nisi514\": true\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"category\": \"<string>\",\n  \"owner\": \"<string>\",\n  \"status\": \"active\",\n  \"trueUp\": \"<boolean>\",\n  \"totalSpend\": \"<double>\",\n  \"subscriptionCount\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"customFields\": {\n    \"dolore_f8b\": false,\n    \"ut_\": \"sunt deserunt\",\n    \"dolorf2d\": -20643202\n  }\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-ff6ac511-19cd-4889-a8c6-450ab5bf118e"
+                },
+                {
+                  "id": "5655992d-66f2-4ab4-aa14-cd084bb0d121",
+                  "name": "Unauthorized. Invalid or missing authentication token.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"owner\": \"<string>\",\n  \"category\": \"<string>\",\n  \"trueUp\": \"<boolean>\",\n  \"customFields\": {\n    \"elitdd3\": false,\n    \"nisi514\": true\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-5655992d-66f2-4ab4-aa14-cd084bb0d121"
+                },
+                {
+                  "id": "6f134a35-8626-4309-9bdf-2fc0bf90fdc5",
+                  "name": "Application not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"owner\": \"<string>\",\n  \"category\": \"<string>\",\n  \"trueUp\": \"<boolean>\",\n  \"customFields\": {\n    \"elitdd3\": false,\n    \"nisi514\": true\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/applications/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "applications",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:38:48.000Z",
+                  "updatedAt": "2026-07-28T03:38:48.000Z",
+                  "uid": "35240-6f134a35-8626-4309-9bdf-2fc0bf90fdc5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:38:48.000Z",
+              "updatedAt": "2026-07-28T03:38:48.000Z",
+              "uid": "35240-818bc150-6cd1-493d-93ad-3b62c7cfcb7f"
+            }
+          ],
+          "id": "d18ee699-5b5a-4694-9c28-8286d9e47f3c",
+          "createdAt": "2026-07-28T03:38:48.000Z",
+          "updatedAt": "2026-07-28T03:38:48.000Z",
+          "uid": "35240-d18ee699-5b5a-4694-9c28-8286d9e47f3c"
+        },
+        {
+          "name": "Zylo List applications",
+          "id": "ed1f745d-97db-42a4-bdef-5b49389c5cbc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/applications?pageSize=25&pageToken=<string>&custom_fields[do_3]=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "applications"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of results to return per page.",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "A token returned from a previous list request to retrieve the next page of results.",
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true.",
+                  "key": "custom_fields[do_3]",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of applications tracked in your Zylo account. Applications represent SaaS products and include metadata such as category, owner, and custom fields."
+          },
+          "response": [
+            {
+              "id": "c056331d-398f-49c0-b692-606f9cea42f3",
+              "name": "A paginated list of applications.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/applications?pageSize=25&pageToken=<string>&custom_fields[do_3]=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "applications"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "A token returned from a previous list request to retrieve the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true.",
+                      "key": "custom_fields[do_3]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"status\": \"active\",\n      \"trueUp\": \"<boolean>\",\n      \"totalSpend\": \"<double>\",\n      \"subscriptionCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"customFields\": {\n        \"eiusmod_352\": -27155169.77468328,\n        \"aliqua_9c8\": \"et eiusmod Duis sit dolore\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"owner\": \"<string>\",\n      \"status\": \"under_review\",\n      \"trueUp\": \"<boolean>\",\n      \"totalSpend\": \"<double>\",\n      \"subscriptionCount\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"customFields\": {\n        \"incididunt_2\": 67530965\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T03:38:48.000Z",
+              "updatedAt": "2026-07-28T03:38:48.000Z",
+              "uid": "35240-c056331d-398f-49c0-b692-606f9cea42f3"
+            },
+            {
+              "id": "3d4fe701-92e0-491d-a455-6c76c804f08f",
+              "name": "Unauthorized. Invalid or missing authentication token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/applications?pageSize=25&pageToken=<string>&custom_fields[do_3]=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "applications"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "A token returned from a previous list request to retrieve the next page of results.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true.",
+                      "key": "custom_fields[do_3]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:38:48.000Z",
+              "updatedAt": "2026-07-28T03:38:48.000Z",
+              "uid": "35240-3d4fe701-92e0-491d-a455-6c76c804f08f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:38:48.000Z",
+          "updatedAt": "2026-07-28T03:38:48.000Z",
+          "uid": "35240-ed1f745d-97db-42a4-bdef-5b49389c5cbc"
+        }
+      ],
+      "id": "56d65dc2-c4e3-40cb-8f59-6325f4bf4ce4",
+      "createdAt": "2026-07-28T03:38:48.000Z",
+      "updatedAt": "2026-07-28T03:38:48.000Z",
+      "uid": "35240-56d65dc2-c4e3-40cb-8f59-6325f4bf4ce4"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zylo.com/v1"
+    }
+  ]
+}

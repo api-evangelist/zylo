@@ -1,0 +1,421 @@
+{
+  "info": {
+    "_postman_id": "28296bd1-85b6-4e6c-a968-1612e824ae91",
+    "name": "Zylo Enterprise Applications Export Jobs API",
+    "description": "The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.\n\nContact Support:\n Name: Zylo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:38:49.000Z",
+    "updatedAt": "2026-07-28T03:38:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-28296bd1-85b6-4e6c-a968-1612e824ae91"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "-",
+          "item": [
+            {
+              "name": "exportJobs",
+              "item": [
+                {
+                  "name": "{exportJobId}",
+                  "item": [
+                    {
+                      "name": "Zylo Get an export job",
+                      "id": "79207f1d-e2d7-465f-8aa2-a89542d0b263",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/-/exportJobs/:exportJobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            "-",
+                            "exportJobs",
+                            ":exportJobId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e61e717b-72d5-4bc8-a65a-6c7f68759012",
+                              "key": "exportJobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the export job."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the status and results of a previously created export job. When the job is complete, the response includes a URL to download the exported data."
+                      },
+                      "response": [
+                        {
+                          "id": "735edf1c-135f-415c-8368-dc2049b4bb4f",
+                          "name": "The export job details and status.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/-/exportJobs/:exportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                "-",
+                                "exportJobs",
+                                ":exportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "exportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"failed\",\n  \"downloadUrl\": \"<uri>\",\n  \"createdAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:49.000Z",
+                          "updatedAt": "2026-07-28T03:38:49.000Z",
+                          "uid": "35240-735edf1c-135f-415c-8368-dc2049b4bb4f"
+                        },
+                        {
+                          "id": "9f07b903-5bde-4f89-a218-6b5a703e6789",
+                          "name": "Unauthorized. Invalid or missing authentication token.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/-/exportJobs/:exportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                "-",
+                                "exportJobs",
+                                ":exportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "exportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:49.000Z",
+                          "updatedAt": "2026-07-28T03:38:49.000Z",
+                          "uid": "35240-9f07b903-5bde-4f89-a218-6b5a703e6789"
+                        },
+                        {
+                          "id": "edfeba71-dc39-43ff-aa78-6bc30a023cc4",
+                          "name": "Export job not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/-/exportJobs/:exportJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                "-",
+                                "exportJobs",
+                                ":exportJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "exportJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:49.000Z",
+                          "updatedAt": "2026-07-28T03:38:49.000Z",
+                          "uid": "35240-edfeba71-dc39-43ff-aa78-6bc30a023cc4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:38:49.000Z",
+                      "updatedAt": "2026-07-28T03:38:49.000Z",
+                      "uid": "35240-79207f1d-e2d7-465f-8aa2-a89542d0b263"
+                    }
+                  ],
+                  "id": "7aaf201d-110d-4682-9864-8684e30743f4",
+                  "createdAt": "2026-07-28T03:38:49.000Z",
+                  "updatedAt": "2026-07-28T03:38:49.000Z",
+                  "uid": "35240-7aaf201d-110d-4682-9864-8684e30743f4"
+                },
+                {
+                  "name": "Zylo Create an export job",
+                  "id": "3aa496df-6bb7-4b22-b38c-8044bbaa4514",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subscriptionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/-/exportJobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        "-",
+                        "exportJobs"
+                      ]
+                    },
+                    "description": "Creates an asynchronous export job for subscription data. Due to the size of the data, subscription exports use an asynchronous workflow where you first create the export job and then retrieve the results when the job is complete."
+                  },
+                  "response": [
+                    {
+                      "id": "e120b4df-d3a1-4c46-ae19-13cec10afd7e",
+                      "name": "The export job has been created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscriptionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/-/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            "-",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"failed\",\n  \"downloadUrl\": \"<uri>\",\n  \"createdAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:49.000Z",
+                      "updatedAt": "2026-07-28T03:38:49.000Z",
+                      "uid": "35240-e120b4df-d3a1-4c46-ae19-13cec10afd7e"
+                    },
+                    {
+                      "id": "f957f8bf-6315-4f71-aed7-9142a5c8c672",
+                      "name": "Unauthorized. Invalid or missing authentication token.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscriptionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"format\": \"csv\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/-/exportJobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            "-",
+                            "exportJobs"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:49.000Z",
+                      "updatedAt": "2026-07-28T03:38:49.000Z",
+                      "uid": "35240-f957f8bf-6315-4f71-aed7-9142a5c8c672"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:38:49.000Z",
+                  "updatedAt": "2026-07-28T03:38:49.000Z",
+                  "uid": "35240-3aa496df-6bb7-4b22-b38c-8044bbaa4514"
+                }
+              ],
+              "id": "02670e42-8bab-44f9-b38f-212c5bcc429a",
+              "createdAt": "2026-07-28T03:38:49.000Z",
+              "updatedAt": "2026-07-28T03:38:49.000Z",
+              "uid": "35240-02670e42-8bab-44f9-b38f-212c5bcc429a"
+            }
+          ],
+          "id": "8bf9277c-c18b-4a33-92ed-87fe42419e85",
+          "createdAt": "2026-07-28T03:38:49.000Z",
+          "updatedAt": "2026-07-28T03:38:49.000Z",
+          "uid": "35240-8bf9277c-c18b-4a33-92ed-87fe42419e85"
+        }
+      ],
+      "id": "d981e698-47e5-4486-8133-d5e74e7cc14f",
+      "createdAt": "2026-07-28T03:38:49.000Z",
+      "updatedAt": "2026-07-28T03:38:49.000Z",
+      "uid": "35240-d981e698-47e5-4486-8133-d5e74e7cc14f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zylo.com/v1"
+    }
+  ]
+}

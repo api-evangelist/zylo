@@ -1,0 +1,754 @@
+{
+  "info": {
+    "_postman_id": "3deb0a53-b1f4-4a2b-8c98-6650d9266c4d",
+    "name": "Zylo Enterprise Applications Import Jobs API",
+    "description": "The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.\n\nContact Support:\n Name: Zylo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:38:50.000Z",
+    "updatedAt": "2026-07-28T03:38:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3deb0a53-b1f4-4a2b-8c98-6650d9266c4d"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "importJob",
+              "item": [
+                {
+                  "name": "{importJobId}",
+                  "item": [
+                    {
+                      "name": "Zylo Get an import job",
+                      "id": "ac41bf30-b33c-4a86-b03d-7c1bd4f31aa4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob/:importJobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob",
+                            ":importJobId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1c607a7e-c316-4786-b652-d2ad84a5f1a0",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the subscription."
+                            },
+                            {
+                              "id": "ff799575-6c55-4755-80be-81efa841aca2",
+                              "key": "importJobId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the import job."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the status and details of a specific import job."
+                      },
+                      "response": [
+                        {
+                          "id": "1b409e03-f2a0-4d72-b96a-1948256a682f",
+                          "name": "The import job details and status.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob/:importJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "importJob",
+                                ":importJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                },
+                                {
+                                  "key": "importJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"subscriptionId\": \"<string>\",\n  \"status\": \"failed\",\n  \"fileName\": \"<string>\",\n  \"recordsProcessed\": \"<integer>\",\n  \"recordsFailed\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:50.000Z",
+                          "updatedAt": "2026-07-28T03:38:50.000Z",
+                          "uid": "35240-1b409e03-f2a0-4d72-b96a-1948256a682f"
+                        },
+                        {
+                          "id": "d8fe8923-4c68-41c7-9414-16fcae4c2436",
+                          "name": "Unauthorized. Invalid or missing authentication token.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob/:importJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "importJob",
+                                ":importJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                },
+                                {
+                                  "key": "importJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:50.000Z",
+                          "updatedAt": "2026-07-28T03:38:50.000Z",
+                          "uid": "35240-d8fe8923-4c68-41c7-9414-16fcae4c2436"
+                        },
+                        {
+                          "id": "738be9a0-7882-45f5-970b-c0e0a12a3fb4",
+                          "name": "Import job not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob/:importJobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "importJob",
+                                ":importJobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                },
+                                {
+                                  "key": "importJobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:38:50.000Z",
+                          "updatedAt": "2026-07-28T03:38:50.000Z",
+                          "uid": "35240-738be9a0-7882-45f5-970b-c0e0a12a3fb4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-ac41bf30-b33c-4a86-b03d-7c1bd4f31aa4"
+                    }
+                  ],
+                  "id": "d294ceaa-26de-46ba-935a-e724b3ccd2ea",
+                  "createdAt": "2026-07-28T03:38:50.000Z",
+                  "updatedAt": "2026-07-28T03:38:50.000Z",
+                  "uid": "35240-d294ceaa-26de-46ba-935a-e724b3ccd2ea"
+                },
+                {
+                  "name": "Zylo List import jobs",
+                  "id": "27fa175d-d8e1-46c3-ad2c-6d02f464de1c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob?pageSize=25&pageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId",
+                        "importJob"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of results to return per page.",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "A token returned from a previous list request to retrieve the next page of results.",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4a263fac-4a2e-4b5c-bfb1-df0a913b813e",
+                          "key": "subscriptionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the subscription."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of import jobs for a specific subscription."
+                  },
+                  "response": [
+                    {
+                      "id": "a1c7a823-b4ce-446e-b97e-97b435221580",
+                      "name": "A paginated list of import jobs.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob?pageSize=25&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return per page.",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "A token returned from a previous list request to retrieve the next page of results.",
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"subscriptionId\": \"<string>\",\n      \"status\": \"pending\",\n      \"fileName\": \"<string>\",\n      \"recordsProcessed\": \"<integer>\",\n      \"recordsFailed\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"error\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"subscriptionId\": \"<string>\",\n      \"status\": \"failed\",\n      \"fileName\": \"<string>\",\n      \"recordsProcessed\": \"<integer>\",\n      \"recordsFailed\": \"<integer>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"error\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-a1c7a823-b4ce-446e-b97e-97b435221580"
+                    },
+                    {
+                      "id": "aab6b00d-e62a-46b1-a3ac-8b39881fc2bf",
+                      "name": "Unauthorized. Invalid or missing authentication token.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob?pageSize=25&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return per page.",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "A token returned from a previous list request to retrieve the next page of results.",
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-aab6b00d-e62a-46b1-a3ac-8b39881fc2bf"
+                    },
+                    {
+                      "id": "6ccd319e-a4ca-4b5f-b82b-8a118d10d2b3",
+                      "name": "Subscription not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob?pageSize=25&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return per page.",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "A token returned from a previous list request to retrieve the next page of results.",
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-6ccd319e-a4ca-4b5f-b82b-8a118d10d2b3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:38:50.000Z",
+                  "updatedAt": "2026-07-28T03:38:50.000Z",
+                  "uid": "35240-27fa175d-d8e1-46c3-ad2c-6d02f464de1c"
+                },
+                {
+                  "name": "Zylo Create an import job",
+                  "id": "3af6974d-573e-4ee0-8607-28a1a44bc4cb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The CSV file containing user, license, and activity data.",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId",
+                        "importJob"
+                      ],
+                      "variable": [
+                        {
+                          "id": "18a90627-b61f-41a4-8ac8-c9af0a72099a",
+                          "key": "subscriptionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the subscription."
+                        }
+                      ]
+                    },
+                    "description": "Creates an import job for a specific subscription by uploading a CSV file containing user, license, and activity data. The subscription must first be associated with the API Integration in the Zylo UI."
+                  },
+                  "response": [
+                    {
+                      "id": "a06dc33d-c5a9-400c-8414-bf1485b164a0",
+                      "name": "The import job has been created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The CSV file containing user, license, and activity data.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"subscriptionId\": \"<string>\",\n  \"status\": \"failed\",\n  \"fileName\": \"<string>\",\n  \"recordsProcessed\": \"<integer>\",\n  \"recordsFailed\": \"<integer>\",\n  \"createdAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-a06dc33d-c5a9-400c-8414-bf1485b164a0"
+                    },
+                    {
+                      "id": "4700ea0c-344d-4763-ab54-1d25961c802e",
+                      "name": "Unauthorized. Invalid or missing authentication token.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The CSV file containing user, license, and activity data.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-4700ea0c-344d-4763-ab54-1d25961c802e"
+                    },
+                    {
+                      "id": "ea1bd1a9-672f-46ed-8f45-4320f426a669",
+                      "name": "Subscription not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The CSV file containing user, license, and activity data.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/importJob",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "importJob"
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:38:50.000Z",
+                      "updatedAt": "2026-07-28T03:38:50.000Z",
+                      "uid": "35240-ea1bd1a9-672f-46ed-8f45-4320f426a669"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:38:50.000Z",
+                  "updatedAt": "2026-07-28T03:38:50.000Z",
+                  "uid": "35240-3af6974d-573e-4ee0-8607-28a1a44bc4cb"
+                }
+              ],
+              "id": "040d685e-8b39-417a-b287-72de5311737e",
+              "createdAt": "2026-07-28T03:38:50.000Z",
+              "updatedAt": "2026-07-28T03:38:50.000Z",
+              "uid": "35240-040d685e-8b39-417a-b287-72de5311737e"
+            }
+          ],
+          "id": "f88ace5b-25b9-48ef-85b7-114d8fcda286",
+          "createdAt": "2026-07-28T03:38:50.000Z",
+          "updatedAt": "2026-07-28T03:38:50.000Z",
+          "uid": "35240-f88ace5b-25b9-48ef-85b7-114d8fcda286"
+        }
+      ],
+      "id": "1441793b-bab3-4773-bbb1-ada6c397c702",
+      "createdAt": "2026-07-28T03:38:50.000Z",
+      "updatedAt": "2026-07-28T03:38:50.000Z",
+      "uid": "35240-1441793b-bab3-4773-bbb1-ada6c397c702"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zylo.com/v1"
+    }
+  ]
+}
