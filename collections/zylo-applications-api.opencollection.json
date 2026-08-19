@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zylo Enterprise Applications API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/applications",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              },
+              {
+                "name": "custom_fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter applications by custom field values. Uses bracket notation such as custom_fields[boolean]=true."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of applications tracked in your Zylo account. Applications represent SaaS products and include metadata such as category, owner, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the application."
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific application by its ID."
+        },
+        {
+          "info": {
+            "name": "Zylo Update an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zylo.com/v1/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates properties of a specific application, including custom fields and the true_up property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

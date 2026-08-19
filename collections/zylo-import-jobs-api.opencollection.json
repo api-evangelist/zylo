@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zylo Enterprise Applications Import Jobs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List import jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of import jobs for a specific subscription."
+        },
+        {
+          "info": {
+            "name": "Zylo Create an import job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates an import job for a specific subscription by uploading a CSV file containing user, license, and activity data. The subscription must first be associated with the API Integration in the Zylo UI."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an import job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId/importJob/:importJobId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              },
+              {
+                "name": "importJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the import job."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and details of a specific import job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

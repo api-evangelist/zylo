@@ -1,0 +1,153 @@
+# Zylo Documentation
+
+> Documentation for Zylo
+
+## API Reference
+- [Introduction](https://developer.zylo.com/reference/introduction.md): Introduction into the Zylo Enterprise API.
+- [Alerts](https://developer.zylo.com/reference/alerts.md): Overview of alerts.
+- [Filtering](https://developer.zylo.com/reference/filtering.md): Overview of the filtering syntax.
+- [Pagination](https://developer.zylo.com/reference/pagination.md): Overview of the pagination syntax.
+- [Payment Upload](https://developer.zylo.com/reference/payment-uploads.md): Overview of how to upload a Payment file.
+- [Create Usage Connect](https://developer.zylo.com/reference/create-usage-connect.md): Overview of how to create a Usage Connect integration.
+- [Import Usage Data](https://developer.zylo.com/reference/import-app-data.md): Overview of how to upload data via Usage Connect integrations.
+- [Using Custom Fields](https://developer.zylo.com/reference/custom-fields.md): Overview of filtering and updating custom fields for applications, payments, contracts, and users.
+- [Create and Modify Custom Fields](https://developer.zylo.com/reference/create-and-modify-custom-fields.md): Overview of creating and updating custom fields.
+- [Getting Started](https://developer.zylo.com/reference/getting-started.md): Brief overview of the authorization options.
+- [API Keys](https://developer.zylo.com/reference/api-key.md): Overview of how to obtain and use API keys.
+- [Client Credentials](https://developer.zylo.com/reference/client-credentials.md): Overview of how to obtain and use OAuth2 Client Credentials access tokens.
+- [JWT Bearer](https://developer.zylo.com/reference/jwt-bearer.md): Overview of how to obtain and use OAuth2 JWT Bearer access tokens.
+- [Permissions](https://developer.zylo.com/reference/permissions.md): Overview of the permissions that can be attached to your API key.
+- [Rate Limiting](https://developer.zylo.com/reference/rate-limit.md): Overview of the different rate limit tiers.
+- [Zylo MCP - Overview & Getting Started](https://developer.zylo.com/reference/getting-started-mcp.md)
+- [Zylo MCP - Setup for ChatGPT](https://developer.zylo.com/reference/setup-chatgpt.md)
+- [Zylo MCP - Setup for Claude](https://developer.zylo.com/reference/setup-claude.md)
+- [Zylo MCP - Tools Reference](https://developer.zylo.com/reference/tools-reference.md)
+- [Data Dictionary](https://developer.zylo.com/reference/data-dictionary.md): Complete reference of all fields available across Zylo resources.
+- [Query Builder](https://developer.zylo.com/reference/query.md): Overview of the query builder syntax.
+- [Query Examples](https://developer.zylo.com/reference/queryexamples.md): Examples and use cases for the query builder.
+- [Run Query](https://developer.zylo.com/reference/querycontroller_runquery.md): For documentation on how to structure the query body, please see [the QueryBuilder guide](/reference/query).  ### Rate Limit `limited`
+- [Validate Query](https://developer.zylo.com/reference/querycontroller_validatequery.md): For documentation on how to structure the query body, please see [the Query Builder guide](/reference/query).  ### Rate Limit `limited`
+- [Report Builder](https://developer.zylo.com/reference/reporting.md): Overview of the reporting builder syntax.
+- [Create a Report](https://developer.zylo.com/reference/create-report.md): Overview of how to create and submit a report.
+- [Resource Relationships](https://developer.zylo.com/reference/relations.md): Overview of the relationships between resources.
+- [Report Examples](https://developer.zylo.com/reference/reportingexamples.md): Examples and use cases for the report builder.
+- [Get Report Jobs](https://developer.zylo.com/reference/reportingcontroller_getreportjobs.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Create Report Job](https://developer.zylo.com/reference/reportingcontroller_createreport.md): ### Required Permissions `admin` + permissions for resource being accessed ### Rate Limit `limited`
+- [Get Report Job by Id](https://developer.zylo.com/reference/reportingcontroller_getreportjobbyid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Download Report Job](https://developer.zylo.com/reference/reportingcontroller_downloadreport.md): ### Required Permissions `admin` + permissions for resource being accessed ### Rate Limit `limited`
+- [Validate Report](https://developer.zylo.com/reference/reportingcontroller_validatereport.md): For documentation on how to structure the query body, please see [the Report Builder guide](/reference/reporting).  ### Rate Limit `limited`
+- [Get Activity History](https://developer.zylo.com/reference/activityhistorycontroller_getactivityhistory.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Activity History by ID](https://developer.zylo.com/reference/activityhistorycontroller_getactivityhistorybyid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Alerts](https://developer.zylo.com/reference/alertscontroller_getalerts.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Create an Alert](https://developer.zylo.com/reference/alertscontroller_addalert.md): ### Required Permissions `applications:write` ### Rate Limit `limited` > 📘 Important Note > > When creating an alert, refer to the [Alerts documentation](./alerts) for guidance. This contains important information on configuring alert settings.
+- [Get Alert by ID](https://developer.zylo.com/reference/alertscontroller_getalertbyid.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Delete an Alert](https://developer.zylo.com/reference/alertscontroller_deletealertbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Update an Alert](https://developer.zylo.com/reference/alertscontroller_updatealertbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited` > 📘 Important Note > > When updating an alert, refer to the [Alerts documentation](./alerts) for guidance.
+- [Create an Application Budget](https://developer.zylo.com/reference/applicationbudgetscontroller_createapplicationbudget.md): ### Required Permissions `applications:write AND spend:write` ### Rate Limit `limited`
+- [Delete an Application Budget](https://developer.zylo.com/reference/applicationbudgetscontroller_deleteapplicationbudget.md): ### Required Permissions `applications:write AND spend:write` ### Rate Limit `limited`
+- [Get Application Budgets](https://developer.zylo.com/reference/applicationbudgetscontroller_getapplicationbudgets.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic`
+- [Get Application Budget Stats](https://developer.zylo.com/reference/applicationbudgetscontroller_getapplicationbudgetstats.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic`
+- [Update an Application Budget](https://developer.zylo.com/reference/applicationbudgetscontroller_updateapplicationbudget.md): ### Required Permissions `applications:write AND spend:write` ### Rate Limit `limited`
+- [Get Application Licenses](https://developer.zylo.com/reference/applicationlicensescontroller_getapplicationlicenses.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Application License by ID](https://developer.zylo.com/reference/applicationlicensescontroller_getapplicationlicensebyid.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Application User by ID](https://developer.zylo.com/reference/applicationuserscontroller_getapplicationuserbyid.md): ### Required Permissions `team:read` ### Rate Limit `basic`
+- [Get Application Users](https://developer.zylo.com/reference/applicationuserscontroller_getapplicationusers.md): ### Required Permissions `team:read` ### Rate Limit `basic` > 📘 Important Note > > The `application_data` field is only returned with an `applicationId` filter.
+- [Get Application Stats by Application ID](https://developer.zylo.com/reference/applicationscontroller_getapplicationstatsbyid.md): Returns aggregated stats for a single application: rolling-12-month and fiscal-year spend, license utilization, user counts, contract dates, cloud-cost consumption, and recent activity dates.  The list form (one row per application) lives at `/v2/applicationStats`.  ### Required Permissions `applications:read AND spend:read AND contracts:read` ### Rate Limit `basic`
+- [Get Application Stats](https://developer.zylo.com/reference/applicationstatscontroller_getapplicationstats.md): Returns aggregated stats per application: rolling-12-month and fiscal-year spend, license utilization, user counts, contract dates, cloud-cost consumption, and recent activity dates. One row per application.  The single-application form lives at `/v2/applications/{applicationId}/stats`.  ### Required Permissions `applications:read AND spend:read AND contracts:read` ### Rate Limit `basic`
+- [Create an Application](https://developer.zylo.com/reference/applicationscontroller_addapplication.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Delete an Application](https://developer.zylo.com/reference/applicationscontroller_deleteapplicationbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Get Application by ID](https://developer.zylo.com/reference/applicationscontroller_getapplicationbyid.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Applications](https://developer.zylo.com/reference/applicationscontroller_getapplications.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Property Options](https://developer.zylo.com/reference/applicationscontroller_getpropertyoptions.md): Returns the existing values for the given property. For category and subcategory the list is exhaustive: add new values in Zylo under Admin -> Categorization with Custom Categories enabled. business_unit also accepts null or a new value, which a PATCH creates. ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Update an Application](https://developer.zylo.com/reference/applicationscontroller_updateapplicationbyid.md): ### Required Permissions `applications:write` ### Rate Limit `basic`
+- [Get Functionalities](https://developer.zylo.com/reference/functionalitiescontroller_getfunctionalities.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Update a functionality](https://developer.zylo.com/reference/functionalitiescontroller_updatefunctionalitiesbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Get Automations](https://developer.zylo.com/reference/automationscontroller_getautomations.md): ### Required Permissions `automations` ### Rate Limit `basic`
+- [Get Automation by ID](https://developer.zylo.com/reference/automationscontroller_getautomationbyid.md): ### Required Permissions `automations` ### Rate Limit `basic`
+- [Get Executions for an Automation](https://developer.zylo.com/reference/automationscontroller_getexecutions.md): ### Required Permissions `automations` ### Rate Limit `basic`
+- [Get an Automation Execution by ID](https://developer.zylo.com/reference/automationscontroller_getexecutionbyid.md): ### Required Permissions `automations` ### Rate Limit `basic`
+- [Start an Automation](https://developer.zylo.com/reference/automationscontroller_startautomation.md): Starts a run of the given automation. Returns the id of the created execution.  ### Required Permissions `automations` ### Rate Limit `limited`
+- [Activate or Deactivate an Automation](https://developer.zylo.com/reference/automationscontroller_setautomationstate.md): Activates or deactivates the given automation.  A request to activate an automation that fails validation (e.g. it has no end node, or no active trigger) returns a 400 whose `hint` directs you to resolve the issue in the Zylo platform — the underlying validation detail is not surfaced, since it isn't actionable via the API.  ### Required Permissions `automations` ### Rate Limit `limited`
+- [Get Company](https://developer.zylo.com/reference/companycontroller_getcompany.md): ### Rate Limit `basic`
+- [Get Company Documents](https://developer.zylo.com/reference/companydocumentscontroller_getcompanydocuments.md): Retrieve a list of company documents. Company documents are created when files are uploaded through the Pending Contracts upload endpoints, attached to contracts, or imported from external systems such as Coupa. Use the `status` query parameter to filter by processing status: `U` (uploading — file received, AI extraction in progress), `A` (active — extraction complete, data available in Pending Contracts), or `E` (error — extraction failed).  ### Required Permissions `applications:read AND contracts:read` ### Rate Limit `basic`
+- [Get Company Document by ID](https://developer.zylo.com/reference/companydocumentscontroller_getcompanydocumentbyid.md): Retrieve a single company document by ID. Use this to check the processing status of a document uploaded through the Pending Contracts upload endpoints.  ### Required Permissions `applications:read AND contracts:read` ### Rate Limit `basic`
+- [Get Pending Contract Line Items](https://developer.zylo.com/reference/pendingcontractlineitemscontroller_getpendingcontractlineitems.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Get Pending Contract Line Item by ID](https://developer.zylo.com/reference/pendingcontractlineitemscontroller_getpendingcontractlineitembyid.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Create a Contract Line Item](https://developer.zylo.com/reference/contractlineitemscontroller_addcontractlineitem.md): ### Required Permissions `contracts:write` ### Rate Limit `limited`
+- [Delete a Contract Line Item](https://developer.zylo.com/reference/contractlineitemscontroller_deletecontractlineitembyid.md): ### Required Permissions `contracts:write` ### Rate Limit `limited`
+- [Get Contract Line Item by ID](https://developer.zylo.com/reference/contractlineitemscontroller_getcontractlineitembyid.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Get Contract Line Items](https://developer.zylo.com/reference/contractlineitemscontroller_getcontractlineitems.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Update a Contract Line Item](https://developer.zylo.com/reference/contractlineitemscontroller_updatecontractlineitembyid.md): ### Required Permissions `contracts:write` ### Rate Limit `limited`
+- [Get Pending Contracts](https://developer.zylo.com/reference/pendingcontractscontroller_getpendingcontracts.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Get Pending Contract by ID](https://developer.zylo.com/reference/pendingcontractscontroller_getpendingcontractbyid.md): ### Required Permissions `contracts:read` ### Rate Limit `basic`
+- [Upload Contract Document](https://developer.zylo.com/reference/pendingcontractscontroller_creatependingcontractupload.md): Upload a contract document in a single request using multipart/form-data. Zylo handles the storage upload on your behalf, so there is no need for a separate PUT step. Include one file as a form part named `file`, and optionally pass a `description` text field.  After upload, Zylo automatically begins AI-powered contract data extraction. Use the returned `company_document_id` with `GET /v2/companyDocuments/{id}` to poll for processing status. Extracted data is available through the Pending Contracts and Pending Contract Line Items resources once processing completes.  Additional information is available in our Help Center article: [Contract Assist Uploads](https://zylo.zendesk.com/hc/en-us/articles/38969081381901-Extract-Contract-Data-with-Contract-Assist-Agent)  Accepted file types: pdf. Maximum file size: 25 MB.  ### Required Permissions `applications:write AND contracts:write` ### Rate Limit `limited`
+- [Create a Contract](https://developer.zylo.com/reference/contractscontroller_addcontract.md): ### Required Permissions `contracts:write` ### Rate Limit `limited` > 📘 Important Note > > If `can_have_contract_lines` is set to `true`, then `application_id` must not be provided. If `can_have_contract_lines` is set to `false`, then `application_id` must be provided.
+- [Delete a Contract](https://developer.zylo.com/reference/contractscontroller_deletecontractbyid.md): ### Required Permissions `contracts:write` ### Rate Limit `limited`
+- [Get Contract by ID](https://developer.zylo.com/reference/contractscontroller_getcontractbyid.md): ### Required Permissions `contracts:read` ### Rate Limit `basic` > 📘 Important Note > > When trying to get a contract that has `can_have_contract_lines` set to `true`, then getting the corresponding [Contract Line Items](./getcontractlineitems) for that contract is necessary to get the full contract details.
+- [Get Contracts](https://developer.zylo.com/reference/contractscontroller_getcontracts.md): ### Required Permissions `contracts:read` ### Rate Limit `basic` > 📘 Important Note > > When trying to get a contract that has `can_have_contract_lines` set to `true`, then getting the corresponding [Contract Line Items](./getcontractlineitems) for that contract is necessary to get the full contract details.
+- [Update a Contract](https://developer.zylo.com/reference/contractscontroller_updatecontractbyid.md): ### Required Permissions `contracts:write` ### Rate Limit `limited` > 📘 Important Note > > If `can_have_contract_lines` is set to `true`, then `application_id` must not be provided. If `can_have_contract_lines` is set to `false`, then `application_id` must be provided.
+- [Convert a Choice Custom Field to Multichoice](https://developer.zylo.com/reference/customfieldscontroller_convertcustomfieldtomultichoice.md): ### Required Permissions `admin` ### Rate Limit `limited` > 📘 Important Note > > This is a one-way conversion: a field can be converted from `choice` to `multichoice`, but not back. The field must currently be of type `choice`.
+- [Create a Custom Field](https://developer.zylo.com/reference/customfieldscontroller_addcustomfield.md): ### Required Permissions `admin` ### Rate Limit `limited` > 📘 Important Note > > When creating refer to the [Create and Modify Custom Fields](./create-and-modify-custom-fields) page for more details on the `options` property.
+- [Delete a Custom Field](https://developer.zylo.com/reference/customfieldscontroller_deletecustomfieldbyid.md): ### Required Permissions `admin` ### Rate Limit `limited` > 📘 Important Note > > Deleting a custom field may have unintended consequences if it is used in other parts of the system.
+- [Get Custom Field by ID](https://developer.zylo.com/reference/customfieldscontroller_getcustomfieldbyid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Custom Fields](https://developer.zylo.com/reference/customfieldscontroller_getcustomfields.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Update a Custom Field](https://developer.zylo.com/reference/customfieldscontroller_updatecustomfieldbyid.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Get Integration by ID](https://developer.zylo.com/reference/integrationscontroller_getintegrationbyid.md): Note: Suite integrations (such as Atlassian) may not have an `application_id` since they can be related to multiple applications.  ### Required Permissions `integrations:read` ### Rate Limit `basic`
+- [Get Integrations](https://developer.zylo.com/reference/integrationscontroller_getintegrations.md): Note: Suite integrations (such as Atlassian) may not have an `application_id` since they can be related to multiple applications.  ### Required Permissions `integrations:read` ### Rate Limit `basic`
+- [Create Payment Upload Job](https://developer.zylo.com/reference/paymentscontroller_createpaymentuploadjob.md): For more information, visit the [Create Payment Upload](/reference/payment-uploads) section of the API documentation. Only accepts CSV files and is limited to 3GB.  ### Required Permissions `spend:write` ### Rate Limit `limited`
+- [Get Payment by ID](https://developer.zylo.com/reference/paymentscontroller_getpaymentbyid.md): ### Required Permissions `spend:read` ### Rate Limit `basic`
+- [Get Payment Imports](https://developer.zylo.com/reference/paymentscontroller_getpaymentimports.md): ### Required Permissions `spend:read` ### Rate Limit `basic`
+- [Get Payments](https://developer.zylo.com/reference/paymentscontroller_getpayments.md): ### Required Permissions `spend:read` ### Rate Limit `basic`
+- [Get Payment Upload Source Types](https://developer.zylo.com/reference/paymentscontroller_getpaymentuploadsourcetypes.md): ### Required Permissions `spend:read` ### Rate Limit `basic`
+- [Get PO Line Item by ID](https://developer.zylo.com/reference/polineitemscontroller_getpolineitembyid.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic` ### Premium Feature Purchase Orders
+- [Get PO Line Items](https://developer.zylo.com/reference/polineitemscontroller_getpolineitems.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic` ### Premium Feature Purchase Orders
+- [Get Purchase Order by ID](https://developer.zylo.com/reference/purchaseorderscontroller_getpurchaseorderbyid.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic` ### Premium Feature Purchase Orders
+- [Get Purchase Orders](https://developer.zylo.com/reference/purchaseorderscontroller_getpurchaseorders.md): ### Required Permissions `applications:read AND spend:read` ### Rate Limit `basic` ### Premium Feature Purchase Orders
+- [Create a Savings Event](https://developer.zylo.com/reference/savingseventscontroller_addsavingsevent.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Delete a Savings Event](https://developer.zylo.com/reference/savingseventscontroller_deletesavingseventbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Get Savings Event by ID](https://developer.zylo.com/reference/savingseventscontroller_getsavingseventbyid.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Savings Events](https://developer.zylo.com/reference/savingseventscontroller_getsavingsevents.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Update a Savings Event](https://developer.zylo.com/reference/savingseventscontroller_updatesavingseventbyid.md): ### Required Permissions `applications:write` ### Rate Limit `limited`
+- [Create Usage Connect Integration](https://developer.zylo.com/reference/usageconnectcontroller_createusageconnect.md): For more information, visit the [Create Usage Connect](/reference/create-usage-connect) section of the API documentation.  ### Required Permissions `integrations:write` ### Rate Limit `limited`
+- [Create Import Job](https://developer.zylo.com/reference/usageconnectcontroller_createusageconnectjob.md): For more information, visit the [Import Usage Data](/reference/import-app-data) section of the API documentation.  Only accepts CSV files and is limited to 3GB.  ### Required Permissions `integrations:write` ### Rate Limit `limited`
+- [Get Import Jobs](https://developer.zylo.com/reference/usageconnectcontroller_getusageconnect.md): ### Required Permissions `integrations:read` ### Rate Limit `basic`
+- [Get Supplier by ID](https://developer.zylo.com/reference/supplierscontroller_getsupplierbyid.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Suppliers](https://developer.zylo.com/reference/supplierscontroller_getsuppliers.md): ### Required Permissions `applications:read` ### Rate Limit `basic`
+- [Get Team Users](https://developer.zylo.com/reference/userscontroller_getusers.md): ### Required Permissions `team:read` ### Rate Limit `basic`
+- [Update a Team User](https://developer.zylo.com/reference/userscontroller_updateuserbyid.md): ### Required Permissions `team:write` ### Rate Limit `limited`
+- [Add Application to a View](https://developer.zylo.com/reference/viewscontroller_addapplicationtoview.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Create a View](https://developer.zylo.com/reference/viewscontroller_addview.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Add Zylo User to a View](https://developer.zylo.com/reference/viewscontroller_addzylousertoview.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Delete Application from a View](https://developer.zylo.com/reference/viewscontroller_deleteapplicationtoview.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Delete Zylo User from a View](https://developer.zylo.com/reference/viewscontroller_deletezylousertoview.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Get Applications by View ID](https://developer.zylo.com/reference/viewscontroller_getapplicationsbyviewid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get View by ID](https://developer.zylo.com/reference/viewscontroller_getviewbyid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Views](https://developer.zylo.com/reference/viewscontroller_getviews.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Zylo Users by View ID](https://developer.zylo.com/reference/viewscontroller_getzylousersbyviewid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Update a View](https://developer.zylo.com/reference/viewscontroller_updateviewbyid.md): Legacy views (an older view type flagged internally as legacy) cannot be updated through the API. Create a new static or dynamic view instead. ### Required Permissions `admin` ### Rate Limit `limited`
+- [Get Workflow by ID](https://developer.zylo.com/reference/workflowscontroller_getworkflowbyid.md): ### Required Permissions `applications:read AND integrations:read AND team:read` ### Rate Limit `basic`
+- [Get Workflow Responses by ID](https://developer.zylo.com/reference/workflowscontroller_getworkflowresponsesbyid.md): ### Required Permissions `applications:read AND integrations:read AND team:read` ### Rate Limit `basic`
+- [Get Workflows](https://developer.zylo.com/reference/workflowscontroller_getworkflows.md): ### Required Permissions `applications:read AND integrations:read AND team:read` ### Rate Limit `basic`
+- [Get Zybrary](https://developer.zylo.com/reference/zybrarycontroller_getzybrary.md): ### Required Permissions `applications:read` ### Rate Limit `basic` > 📘 Important Note > > This endpoint requires one of the following query parameters: search, app_domain, id, app_name.
+- [Create Zylo User](https://developer.zylo.com/reference/zylouserscontroller_addzylouser.md): ### Required Permissions `admin` ### Rate Limit `limited`  > 📘 Important Note > > Creating a Zylo User is currently limited to companies with SAML enabled.
+- [Delete Zylo User by ID](https://developer.zylo.com/reference/zylouserscontroller_deletezylouserbyid.md): ### Required Permissions `admin` ### Rate Limit `limited`
+- [Get Zylo User by ID](https://developer.zylo.com/reference/zylouserscontroller_getzylouserbyid.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Get Zylo Users](https://developer.zylo.com/reference/zylouserscontroller_getzylousers.md): ### Required Permissions `admin` ### Rate Limit `basic`
+- [Update Zylo User by ID](https://developer.zylo.com/reference/zylouserscontroller_updatezylouserbyid.md): ### Required Permissions `admin` ### Rate Limit `limited`  > 📘 Important Note > > Updating `permissions` replaces the entire role set for the user — any > role not included in the request is removed, not merged. To add or keep a > permission, include the user's existing roles in the request.
+
+## Recipes
+- [Cursor Pagination](https://developer.zylo.com/recipes/cursor-pagination.md)
+- [Get Application Payments from Unapproved Cost Centers](https://developer.zylo.com/recipes/get-application-payments-from-unapproved-cost-centers.md)
+- [Skip Pagination](https://developer.zylo.com/recipes/skip-pagination.md)
+
+## Changelog
+- [August 11, 2026](https://developer.zylo.com/changelog/2026-08-11.md)
+- [August 6, 2026](https://developer.zylo.com/changelog/2026-08-06.md)
+- [August 4, 2026](https://developer.zylo.com/changelog/2026-08-04.md)
+- [July 28, 2026](https://developer.zylo.com/changelog/2026-07-28.md)
+- [July 27, 2026](https://developer.zylo.com/changelog/2026-07-27.md)
+- [July 21, 2026](https://developer.zylo.com/changelog/2026-07-21.md)
+- [July 17, 2026](https://developer.zylo.com/changelog/2026-07-17.md)
+- [July 9, 2026](https://developer.zylo.com/changelog/2026-07-09.md)
+- [June 25, 2026](https://developer.zylo.com/changelog/2026-06-25.md)
+- [May 27, 2026](https://developer.zylo.com/changelog/2026-05-27.md)

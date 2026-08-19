@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zylo Enterprise Applications Subscriptions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned from a previous list request to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of subscriptions configured in your Zylo account. Subscriptions represent configured instances of SaaS applications and typically have a 1:1 relationship with a given application."
+        },
+        {
+          "info": {
+            "name": "Zylo Get a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the subscription."
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific subscription by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

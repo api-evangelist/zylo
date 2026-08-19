@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zylo Enterprise Applications Export Jobs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Export Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zylo Create an export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zylo.com/v1/subscriptions/-/exportJobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an asynchronous export job for subscription data. Due to the size of the data, subscription exports use an asynchronous workflow where you first create the export job and then retrieve the results when the job is complete."
+        },
+        {
+          "info": {
+            "name": "Zylo Get an export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zylo.com/v1/subscriptions/-/exportJobs/:exportJobId",
+            "params": [
+              {
+                "name": "exportJobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the export job."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and results of a previously created export job. When the job is complete, the response includes a URL to download the exported data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
