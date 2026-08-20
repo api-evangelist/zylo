@@ -9,6 +9,8 @@ apis:
   humanURL: https://developer.zylo.com/
   baseURL: https://api.zylo.com/v1
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -88,6 +90,8 @@ apis:
   humanURL: https://developer.zylo.com/
   baseURL: https://api.zylo.com/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
