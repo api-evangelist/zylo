@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zylo Enterprise Applications Export Jobs API
+  title: Zylo Enterprise Export Jobs API
   description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
   version: 1.0.0
   contact:
@@ -80,6 +80,33 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ExportJobRequest:
+      type: object
+      properties:
+        subscriptionIds:
+          type: array
+          items:
+            type: string
+          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
+        format:
+          type: string
+          description: The format of the exported data.
+          enum:
+          - csv
+          - json
+          default: csv
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
     ExportJob:
       type: object
       properties:
@@ -109,33 +136,6 @@ components:
         error:
           type: string
           description: Error message if the job failed.
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
-    ExportJobRequest:
-      type: object
-      properties:
-        subscriptionIds:
-          type: array
-          items:
-            type: string
-          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
-        format:
-          type: string
-          description: The format of the exported data.
-          enum:
-          - csv
-          - json
-          default: csv
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zylo Enterprise Applications Subscriptions API
+  title: Zylo Enterprise Subscriptions API
   description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
   version: 1.0.0
   contact:
@@ -98,19 +98,6 @@ components:
         details:
           type: string
           description: Additional details about the error.
-    SubscriptionListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        nextPageToken:
-          type: string
-          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
-        totalCount:
-          type: integer
-          description: The total number of subscriptions.
     Subscription:
       type: object
       properties:
@@ -162,6 +149,19 @@ components:
           type: object
           additionalProperties: true
           description: Custom fields associated with the subscription.
+    SubscriptionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of subscriptions.
   securitySchemes:
     bearerAuth:
       type: http

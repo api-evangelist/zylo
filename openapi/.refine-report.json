@@ -1,10 +1,7 @@
 {
   "provider": "zylo",
   "sources": [
-    "zylo-applications-api-openapi.yml",
-    "zylo-export-jobs-api-openapi.yml",
-    "zylo-import-jobs-api-openapi.yml",
-    "zylo-subscriptions-api-openapi.yml"
+    "_original/zylo-enterprise-openapi.yml"
   ],
   "outputs": [
     "zylo-applications-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zylo-enterprise-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "zylo-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zylo-export-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zylo-import-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zylo-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

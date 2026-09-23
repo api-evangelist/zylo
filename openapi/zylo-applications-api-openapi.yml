@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Zylo Enterprise Applications API
   description: The Zylo Enterprise API provides a modern, RESTful API to work with your SaaS subscription data. The API is built using resource-oriented URLs that are protected by HTTPS transport security and authenticated via secure tokens. It enables the export of SaaS usage and subscription data to reporting tools outside of Zylo, as well as the import of additional unintegrated usage data.
@@ -133,6 +133,34 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
+    ApplicationUpdate:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The owner of the application.
+        category:
+          type: string
+          description: The category of the application.
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields to update on the application.
     Application:
       type: object
       properties:
@@ -177,18 +205,6 @@ components:
           type: object
           additionalProperties: true
           description: Custom fields associated with the application.
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
     ApplicationListResponse:
       type: object
       properties:
@@ -202,22 +218,6 @@ components:
         totalCount:
           type: integer
           description: The total number of applications.
-    ApplicationUpdate:
-      type: object
-      properties:
-        owner:
-          type: string
-          description: The owner of the application.
-        category:
-          type: string
-          description: The category of the application.
-        trueUp:
-          type: boolean
-          description: Whether the application is marked for true-up.
-        customFields:
-          type: object
-          additionalProperties: true
-          description: Custom fields to update on the application.
   securitySchemes:
     bearerAuth:
       type: http
