@@ -80,21 +80,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ExportJobRequest:
-      type: object
-      properties:
-        subscriptionIds:
-          type: array
-          items:
-            type: string
-          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
-        format:
-          type: string
-          description: The format of the exported data.
-          enum:
-          - csv
-          - json
-          default: csv
     Error:
       type: object
       properties:
@@ -136,6 +121,21 @@ components:
         error:
           type: string
           description: Error message if the job failed.
+    ExportJobRequest:
+      type: object
+      properties:
+        subscriptionIds:
+          type: array
+          items:
+            type: string
+          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
+        format:
+          type: string
+          description: The format of the exported data.
+          enum:
+          - csv
+          - json
+          default: csv
   securitySchemes:
     bearerAuth:
       type: http
