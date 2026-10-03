@@ -133,6 +133,19 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ApplicationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of applications.
     Error:
       type: object
       properties:
@@ -205,19 +218,6 @@ components:
           type: object
           additionalProperties: true
           description: Custom fields associated with the application.
-    ApplicationListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        nextPageToken:
-          type: string
-          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
-        totalCount:
-          type: integer
-          description: The total number of applications.
   securitySchemes:
     bearerAuth:
       type: http

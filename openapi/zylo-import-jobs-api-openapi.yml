@@ -149,18 +149,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
     ImportJob:
       type: object
       properties:
@@ -211,6 +199,18 @@ components:
         totalCount:
           type: integer
           description: The total number of import jobs.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
   securitySchemes:
     bearerAuth:
       type: http
