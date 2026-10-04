@@ -133,47 +133,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ApplicationListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        nextPageToken:
-          type: string
-          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
-        totalCount:
-          type: integer
-          description: The total number of applications.
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
-    ApplicationUpdate:
-      type: object
-      properties:
-        owner:
-          type: string
-          description: The owner of the application.
-        category:
-          type: string
-          description: The category of the application.
-        trueUp:
-          type: boolean
-          description: Whether the application is marked for true-up.
-        customFields:
-          type: object
-          additionalProperties: true
-          description: Custom fields to update on the application.
     Application:
       type: object
       properties:
@@ -218,6 +177,47 @@ components:
           type: object
           additionalProperties: true
           description: Custom fields associated with the application.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
+    ApplicationUpdate:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The owner of the application.
+        category:
+          type: string
+          description: The category of the application.
+        trueUp:
+          type: boolean
+          description: Whether the application is marked for true-up.
+        customFields:
+          type: object
+          additionalProperties: true
+          description: Custom fields to update on the application.
+    ApplicationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of applications.
   securitySchemes:
     bearerAuth:
       type: http
