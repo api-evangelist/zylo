@@ -145,6 +145,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zylo.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/zylo-capability-edges.yml
+    name: Zylo Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/zylo/overview
   - type: AgenticAccess

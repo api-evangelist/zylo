@@ -1,0 +1,27 @@
+slug: zylo
+provider: Zylo
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Applications
+  spec_file: zylo-applications-api-openapi.yml
+  capability_id: BC-600.60
+  capability_id_l1: BC-600
+  capability_name: IT Application Management
+  confidence: 0.75
+  evidence: GET /applications  listApplications  Zylo List applications — "Zylo is a SaaS management platform
+    that helps organizations optimize their software usage and spending"
+  reason: The tag exposes the inventory of SaaS applications in use by the organisation, with read and
+    update of application records. That is the application portfolio/inventory discipline of IT Application
+    Management (lifecycle, rationalisation); some ambiguity with IT Financial Management since Zylo also
+    tracks spend, hence 0.75.
