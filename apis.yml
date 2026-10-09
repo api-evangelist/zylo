@@ -145,6 +145,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zylo.png
 access: 3rd-Party
 common:
+  - type: Plans
+    url: plans/zylo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/zylo-rate-limits.yml
+  - type: FinOps
+    url: finops/zylo-finops.yml
   - type: CapabilityMap
     url: capabilities/zylo-capability-edges.yml
     name: Zylo Business Capability Map
