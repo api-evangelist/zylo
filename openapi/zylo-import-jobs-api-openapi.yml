@@ -149,6 +149,19 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ImportJobListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportJob'
+        nextPageToken:
+          type: string
+          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
+        totalCount:
+          type: integer
+          description: The total number of import jobs.
     ImportJob:
       type: object
       properties:
@@ -186,19 +199,6 @@ components:
         error:
           type: string
           description: Error message if the job failed.
-    ImportJobListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImportJob'
-        nextPageToken:
-          type: string
-          description: A token that can be passed as a pageToken query parameter to retrieve the next page of results.
-        totalCount:
-          type: integer
-          description: The total number of import jobs.
     Error:
       type: object
       properties:

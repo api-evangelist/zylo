@@ -80,18 +80,21 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
+    ExportJobRequest:
       type: object
       properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
+        subscriptionIds:
+          type: array
+          items:
+            type: string
+          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
+        format:
           type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
+          description: The format of the exported data.
+          enum:
+          - csv
+          - json
+          default: csv
     ExportJob:
       type: object
       properties:
@@ -121,21 +124,18 @@ components:
         error:
           type: string
           description: Error message if the job failed.
-    ExportJobRequest:
+    Error:
       type: object
       properties:
-        subscriptionIds:
-          type: array
-          items:
-            type: string
-          description: An optional list of subscription IDs to include in the export. If not specified, all subscriptions will be exported.
-        format:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
           type: string
-          description: The format of the exported data.
-          enum:
-          - csv
-          - json
-          default: csv
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
   securitySchemes:
     bearerAuth:
       type: http

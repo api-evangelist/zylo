@@ -99,18 +99,6 @@ components:
         totalCount:
           type: integer
           description: The total number of subscriptions.
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        details:
-          type: string
-          description: Additional details about the error.
     Subscription:
       type: object
       properties:
@@ -162,6 +150,18 @@ components:
           type: object
           additionalProperties: true
           description: Custom fields associated with the subscription.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        details:
+          type: string
+          description: Additional details about the error.
   securitySchemes:
     bearerAuth:
       type: http
